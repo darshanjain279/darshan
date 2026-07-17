@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>Pointer Foundations — Pointers and Memory — darshandev</title>
+    <meta name="description" content="Memory as boxes, &amp;, declaring pointers, *, initializing, garbage-when-uninitialized.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/study/c-programming/pointers-memory/pointer-foundations/">
+    <meta property="og:title" content="Pointer Foundations — Pointers and Memory — darshandev">
+    <meta property="og:description" content="Memory as boxes, &amp;, declaring pointers, *, initializing, garbage-when-uninitialized.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/study/c-programming/pointers-memory/pointer-foundations/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/#study">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/study/c-programming/pointers-memory/">← Pointers and Memory</a><nav class="crumb" aria-label="Breadcrumb"><a href="/#study">Collection Log</a><span class="crumb__sep">/</span><a href="/study/c-programming/pointers-memory/">Pointers and Memory</a><span class="crumb__sep">/</span><span class="crumb__current">Pointer Foundations</span></nav><span class="accession stamp-play">C PROGRAMMING 1.2.A</span><h1 tabindex="-1">Pointer Foundations</h1><p class="detail-head__write-up">Memory as boxes, &, declaring pointers, *, initializing, garbage-when-uninitialized.</p></div><div class="detail-meta"><div class="detail-meta__item"><span class="detail-meta__label">Status</span><span class="detail-meta__value">Collected</span></div><div class="detail-meta__item"><span class="detail-meta__label">Notes</span><span class="detail-meta__value">Chapter test: 5/7 (retry)</span></div></div><div class="detail-body"><p>Six pieces, and this is where the mental model either clicks or doesn't: memory as a row of addressable boxes, <code>&amp;</code> to get an address, how to declare a pointer, <code>*</code> to dereference, initializing one properly, and what happens when I don't.</p><h3>Memory as boxes</h3><p>Every byte in memory has its own address, like a house number. A variable is really just a label the compiler attaches to one of those addresses. A pointer is a variable whose entire job is to store one of those addresses instead of an ordinary value.</p><pre><code>int x = 10;
+int *p = &amp;x;
+
+printf("%d\n", x);            /* 10 — the value */
+printf("%p\n", (void *)&amp;x);   /* 0x7ffee... — the address */
+printf("%p\n", (void *)p);    /* same address — p stores it */
+printf("%d\n", *p);           /* 10 — dereferencing p gets back to the value */</code></pre><h3>Declaring vs dereferencing</h3><p><code>int *p</code> reads as "p is a pointer to int" when declaring. The same <code>*</code> used later, <code>*p</code>, means "go to the address p holds and get the value there" — same symbol, two different jobs depending on context.</p><h3>Garbage when uninitialized</h3><p><code>int *p;</code> with no initializer holds whatever address happened to already be sitting in that memory — not NULL, not zero, just garbage. Dereferencing it reads or writes to a random address, which might crash immediately or might silently corrupt something else entirely. A pointer gets initialized, every time, even if it's just to NULL.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/pointers-memory/pointer-foundations"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>

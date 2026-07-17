@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>Bit Fields — Structs and Unions — darshandev</title>
+    <meta name="description" content="Packing sub-byte fields into a struct — the register-map pattern.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/study/c-programming/structs-unions/bit-fields/">
+    <meta property="og:title" content="Bit Fields — Structs and Unions — darshandev">
+    <meta property="og:description" content="Packing sub-byte fields into a struct — the register-map pattern.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/study/c-programming/structs-unions/bit-fields/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/#study">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/study/c-programming/structs-unions/">← Structs and Unions</a><nav class="crumb" aria-label="Breadcrumb"><a href="/#study">Collection Log</a><span class="crumb__sep">/</span><a href="/study/c-programming/structs-unions/">Structs and Unions</a><span class="crumb__sep">/</span><span class="crumb__current">Bit Fields</span></nav><span class="accession stamp-play">C PROGRAMMING 1.4.E</span><h1 tabindex="-1">Bit Fields</h1><p class="detail-head__write-up">Packing sub-byte fields into a struct — the register-map pattern.</p></div><div class="detail-meta"><div class="detail-meta__item"><span class="detail-meta__label">Status</span><span class="detail-meta__value">Collected</span></div><div class="detail-meta__item"><span class="detail-meta__label">Notes</span><span class="detail-meta__value">Chapter test: 4/5</span></div></div><div class="detail-body"><p>This is the one that actually explains why hardware register documentation always comes with a bit diagram — bit fields are how that diagram becomes a struct.</p><pre><code>struct status_reg {
+    unsigned int enable : 1;    /* 1 bit */
+    unsigned int mode   : 2;    /* 2 bits */
+    unsigned int        : 1;    /* 1 padding bit, unnamed */
+    unsigned int errcode: 4;    /* 4 bits */
+};
+
+struct status_reg r;
+r.enable = 1;
+r.mode = 3;</code></pre><p>The <code>: n</code> after each member tells the compiler to pack it into exactly <code>n</code> bits instead of a full <code>unsigned int</code> — <code>enable</code> and <code>mode</code> and <code>errcode</code> here all share the same underlying word instead of each taking 4 bytes. It's precisely the same layout a register datasheet describes — "bit 0 is enable, bits 1-2 are mode" — just expressed as C instead of a table.</p><p>The catch is that exact bit ordering and padding within the word is implementation-defined — portable across compilers and architectures it is not, which is part of why a lot of real driver code still does manual shifting and masking on a plain integer instead of trusting bit-field layout.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/structs-unions/bit-fields"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>

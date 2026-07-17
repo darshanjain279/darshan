@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>Memory Layout & MMIO Patterns — Pointers and Memory — darshandev</title>
+    <meta name="description" content="The five memory segments, where variables actually live, the MMIO pointer pattern, register read-modify-write through volatile.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/study/c-programming/pointers-memory/memory-layout-mmio/">
+    <meta property="og:title" content="Memory Layout & MMIO Patterns — Pointers and Memory — darshandev">
+    <meta property="og:description" content="The five memory segments, where variables actually live, the MMIO pointer pattern, register read-modify-write through volatile.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/study/c-programming/pointers-memory/memory-layout-mmio/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/#study">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/study/c-programming/pointers-memory/">← Pointers and Memory</a><nav class="crumb" aria-label="Breadcrumb"><a href="/#study">Collection Log</a><span class="crumb__sep">/</span><a href="/study/c-programming/pointers-memory/">Pointers and Memory</a><span class="crumb__sep">/</span><span class="crumb__current">Memory Layout & MMIO Patterns</span></nav><span class="accession stamp-play">C PROGRAMMING 1.2.H</span><h1 tabindex="-1">Memory Layout & MMIO Patterns</h1><p class="detail-head__write-up">The five memory segments, where variables actually live, the MMIO pointer pattern, register read-modify-write through volatile.</p></div><div class="detail-meta"><div class="detail-meta__item"><span class="detail-meta__label">Status</span><span class="detail-meta__value">Collected</span></div><div class="detail-meta__item"><span class="detail-meta__label">Notes</span><span class="detail-meta__value">Chapter test: 3/5 + 2/2 extra</span></div></div><div class="detail-body"><p>Four pieces, and this is the payoff chapter for everything in 1.2 — the actual pattern used to read and write a hardware register from C.</p><h3>The five segments</h3><div class="detail-body__table-wrap"><table class="detail-body__table"><thead><tr><th>Segment</th><th>What lives there</th></tr></thead><tbody><tr><td>Text</td><td>the compiled machine code itself</td></tr><tr><td>Initialized data</td><td>globals and statics with an explicit initial value</td></tr><tr><td>BSS</td><td>globals and statics that default to zero</td></tr><tr><td>Heap</td><td>malloc'd memory, grows upward</td></tr><tr><td>Stack</td><td>local variables and function call frames, grows downward</td></tr></tbody></table></div><h3>The MMIO pointer pattern</h3><pre><code>#define GPIO_BASE 0x40020000
+volatile uint32_t *gpio_reg = (volatile uint32_t *)GPIO_BASE;
+
+*gpio_reg = 0x1;                 /* write the register */
+uint32_t status = *gpio_reg;     /* read the register */</code></pre><p>A hardware register is just a fixed memory address — cast that address to a pointer, mark it <code>volatile</code> so the compiler never caches or reorders the access, and dereferencing it reads or writes the actual hardware.</p><h3>Read-modify-write</h3><pre><code>*gpio_reg |= (1 &lt;&lt; 3);    /* set bit 3, leave the rest alone */
+*gpio_reg &amp;= ~(1 &lt;&lt; 3);   /* clear bit 3, leave the rest alone */</code></pre><p>Setting a single bit without disturbing the others is the pattern that shows up in essentially every register access in real driver code — OR to set, AND-with-NOT to clear, and <code>volatile</code> making sure the compiler doesn't decide the read is redundant and skip it.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/pointers-memory/memory-layout-mmio"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>

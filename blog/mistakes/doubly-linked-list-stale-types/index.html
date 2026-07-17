@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>What Copying My Own Working Code Taught Me About Copying Code — darshandev</title>
+    <meta name="description" content="My singly linked list worked, fully tested. Adapting it into a doubly linked one should have been the easy fifteen minutes of the session. I put three bugs into it instead, all from the same bad habit.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/blog/mistakes/doubly-linked-list-stale-types/">
+    <meta property="og:title" content="What Copying My Own Working Code Taught Me About Copying Code — darshandev">
+    <meta property="og:description" content="My singly linked list worked, fully tested. Adapting it into a doubly linked one should have been the easy fifteen minutes of the session. I put three bugs into it instead, all from the same bad habit.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/blog/mistakes/doubly-linked-list-stale-types/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/#study">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/blog/">← Blog</a><nav class="crumb" aria-label="Breadcrumb"><a href="/blog/">Blog</a><span class="crumb__sep">/</span><a href="/blog/mistakes/">Mistakes</a><span class="crumb__sep">/</span><span class="crumb__current">What Copying My Own Working Code Taught Me About Copying Code</span></nav><span class="accession stamp-play">MISTAKES — 2 Jul 2026</span><h1 tabindex="-1">What Copying My Own Working Code Taught Me About Copying Code</h1><p class="detail-head__write-up">My singly linked list worked, fully tested. Adapting it into a doubly linked one should have been the easy fifteen minutes of the session. I put three bugs into it instead, all from the same bad habit.</p></div><div class="detail-meta"><div class="detail-meta__item"><span class="detail-meta__label">Category</span><a class="detail-meta__value detail-meta__value--link" href="/blog/mistakes/">Mistakes</a></div><div class="detail-meta__item"><span class="detail-meta__label">Published</span><span class="detail-meta__value">2 Jul 2026</span></div><div class="detail-meta__item"><span class="detail-meta__label">Reading time</span><span class="detail-meta__value">6 min</span></div></div><div class="tag-row"><span class="tag">c</span><span class="tag">data-structures</span><span class="tag">linked-list</span></div><div class="detail-body"><p>My singly linked list worked — insert, delete, traverse, all tested. Turning it into a doubly linked version felt like it should've been the easy fifteen minutes of the session. Instead I put three bugs into it, and looking back, all three came from the same thing: I trusted a pattern that already worked instead of actually rechecking it for the new shape.</p><h3>The setup</h3><p>The original was just <code>struct node { int data; struct node *next; };</code> with the usual head-pointer functions, all of it working. The next exercise was to add a <code>prev</code> pointer and turn it into a doubly linked list, <code>struct dnode</code>, and in my head I filed that under "small delta on something that already works." That exact assumption is what got me three separate times in the same sitting.</p><h3>What went wrong</h3><p>First bug was in the struct itself:</p><pre><code>struct dnode {
+    int data;
+    struct node *next;
+    struct node *prev;
+};</code></pre><p>I renamed the tag to <code>dnode</code> and stopped there. The two pointer fields were still typed as <code>struct node *</code>, which doesn't even exist as a meaningful type here anymore — I'd copied the field list from the old version and only really read the one part I was changing, the tag at the top.</p><p>Second bug showed up in <code>insert_head</code>:</p><pre><code>void insert_head(struct dnode **head, int val) {
+    struct dnode *n = malloc(sizeof(*n));
+    n-&gt;data = value;
+    ...
+}</code></pre><p>The parameter is <code>val</code>. The body assigns from <code>value</code>, which isn't declared anywhere in this function. That's copy-paste residue from an earlier draft where I'd actually called the parameter <code>value</code> — when I shortened it to <code>val</code> I only updated the signature, not the line inside the body still using the old name.</p><p>Third bug was the one that actually ate time. My <code>dnode</code> struct doesn't have a <code>tail</code> pointer, only <code>head</code>, so finding the last node still means walking forward from the front even though every node along the way has a working <code>prev</code>. To find the node just before the tail, I needed a variable — called it <code>saved</code> — that had to still be around <em>after</em> the loop finished. First attempt, I declared it inside the <code>while</code> body:</p><pre><code>while (cur-&gt;next != NULL) {
+    struct dnode *saved = cur;
+    cur = cur-&gt;next;
+}
+/* saved: doesn't exist here */</code></pre><p>That's a fresh <code>saved</code> created and destroyed every single iteration, so by the time the loop exits there's nothing left to read, and the compiler told me so. Second attempt I moved it, but into an <code>if</code> nested inside the same loop, same problem one level deeper. Took two wrong tries before it landed on declaring it outside the loop entirely, at the same brace level the loop itself sits at.</p><h3>The fix</h3><pre><code>struct dnode {
+    int data;
+    struct dnode *next;
+    struct dnode *prev;
+};
+
+void insert_head(struct dnode **head, int val) {
+    struct dnode *n = malloc(sizeof(*n));
+    n-&gt;data = val;
+    n-&gt;prev = NULL;
+    n-&gt;next = *head;
+    if (*head) (*head)-&gt;prev = n;
+    *head = n;
+}
+
+struct dnode *saved = NULL;
+struct dnode *cur = *head;
+while (cur-&gt;next != NULL) {
+    saved = cur;
+    cur = cur-&gt;next;
+}
+/* saved now correctly holds the node before the tail */</code></pre><p>Every field type actually traces back to <code>dnode</code> now, every name inside a function matches its own signature, and <code>saved</code> gets declared once, above the loop, so it's still around after the loop ends instead of vanishing along with the last iteration's stack frame.</p><div class="detail-note"><span class="detail-note__label">The lesson</span><p>I think adapting a pattern that already works is its own way of messing up, kind of separate from writing something wrong from scratch — none of these three were really logic bugs, more like consistency slips, places where a name or a type quietly didn't get updated along with everything else. What I want to actually do differently: when I'm adapting old code instead of writing new code, go back and recheck every type and every parameter name against the new context, instead of assuming something's fine just because it looks like the old version. Whether I'll actually remember to do that under time pressure, I'm not sure — this whole session is proof I don't do it automatically. And specifically for the third bug: a variable that needs to survive a loop has to be declared outside it, at the same brace level, not nested inside anything the loop's body has. Hoping that one's simple enough to actually stick this time.</p></div><div class="detail-related"><em>Related: <a href="/">Linked lists</a> in the DSA syllabus, currently in progress.</em></div></div><div class="entry-nav"><a class="back-link" href="/blog/mistakes/function-pointer-parens/">← The Missing Parentheses That Turned My Callback Into Something Else</a><a class="back-link" href="/blog/mistakes/printf-hid-the-bug-it-was-supposed-to-prove/">The Format Specifier That Hid My Own Bug From Me →</a></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="blog/doubly-linked-list-stale-types"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>Array Fundamentals — Strings and Arrays — darshandev</title>
+    <meta name="description" content="Declaration, indexing, fixed size, no bounds checking, decay on function call.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/study/c-programming/strings-arrays/array-fundamentals/">
+    <meta property="og:title" content="Array Fundamentals — Strings and Arrays — darshandev">
+    <meta property="og:description" content="Declaration, indexing, fixed size, no bounds checking, decay on function call.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/study/c-programming/strings-arrays/array-fundamentals/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/#study">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/study/c-programming/strings-arrays/">← Strings and Arrays</a><nav class="crumb" aria-label="Breadcrumb"><a href="/#study">Collection Log</a><span class="crumb__sep">/</span><a href="/study/c-programming/strings-arrays/">Strings and Arrays</a><span class="crumb__sep">/</span><span class="crumb__current">Array Fundamentals</span></nav><span class="accession stamp-play">C PROGRAMMING 1.3.A</span><h1 tabindex="-1">Array Fundamentals</h1><p class="detail-head__write-up">Declaration, indexing, fixed size, no bounds checking, decay on function call.</p></div><div class="detail-meta"><div class="detail-meta__item"><span class="detail-meta__label">Status</span><span class="detail-meta__value">Collected</span></div></div><div class="detail-body"><p>Eight pieces on the array as C actually implements it: declaration, indexing, a size that's fixed the moment it's declared, no bounds checking at all, and decay the instant it's passed to a function.</p><pre><code>int arr[5];                       /* uninitialized — garbage until set */
+int arr2[5] = {1, 2, 3, 4, 5};    /* fully initialized */
+int arr3[] = {1, 2, 3};           /* size inferred as 3 */
+
+arr[0] = 10;                       /* zero-indexed like everything else in C */</code></pre><p>The size is baked in at declaration and can't grow or shrink afterward — there's no <code>arr.append()</code> equivalent. And there's no bounds checking whatsoever: <code>arr[10]</code> on a 5-element array compiles and runs, reading or writing whatever memory happens to be sitting past the end. It's undefined behavior, not a caught error.</p><h3>Decay on function call</h3><pre><code>void print_size(int arr[]) {
+    printf("%zu\n", sizeof(arr));   /* prints 8 — sizeof(int*), not the array size! */
+}
+
+int main(void) {
+    int arr[10];
+    printf("%zu\n", sizeof(arr));   /* prints 40 — this one's the real array size */
+    print_size(arr);
+    return 0;
+}</code></pre><p>The <code>sizeof(arr) / sizeof(arr[0])</code> trick for array length only works in the exact scope where the array was declared. The moment it's passed into a function, it decays to a plain pointer, and <code>sizeof</code> on a parameter just measures the pointer — which is why array-taking functions always need the length passed in separately.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/strings-arrays/array-fundamentals"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>Opposite Ends + Sort — Two Pointers — darshandev</title>
+    <meta name="description" content="Sort first, then two-pointer from the ends — the k-Sum family. 3Sum, 4Sum, 3Sum Closest, Boats to Save People.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/study/dsa/two-pointers/opposite-ends-sort/">
+    <meta property="og:title" content="Opposite Ends + Sort — Two Pointers — darshandev">
+    <meta property="og:description" content="Sort first, then two-pointer from the ends — the k-Sum family. 3Sum, 4Sum, 3Sum Closest, Boats to Save People.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/study/dsa/two-pointers/opposite-ends-sort/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/#study">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/study/dsa/two-pointers/">← Two Pointers</a><nav class="crumb" aria-label="Breadcrumb"><a href="/#study">Collection Log</a><span class="crumb__sep">/</span><a href="/study/dsa/two-pointers/">Two Pointers</a><span class="crumb__sep">/</span><span class="crumb__current">Opposite Ends + Sort</span></nav><span class="accession stamp-play">DSA 01.B</span><h1 tabindex="-1">Opposite Ends + Sort</h1><p class="detail-head__write-up">Sort first, then two-pointer from the ends — the k-Sum family. 3Sum, 4Sum, 3Sum Closest, Boats to Save People.</p></div><div class="detail-meta"><div class="detail-meta__item"><span class="detail-meta__label">Status</span><span class="detail-meta__value">Collected</span></div><div class="detail-meta__item"><span class="detail-meta__label">Notes</span><span class="detail-meta__value">4 solved</span></div></div><div class="detail-body"><p>Same opposite-ends shape as A, but with a sort step first — this is the whole k-Sum family: 3Sum, 4Sum, 3Sum Closest, Boats to Save People.</p><pre><code>void threeSum(int *nums, int n) {
+    sort(nums, n);
+    for (int i = 0; i &lt; n - 2; i++) {
+        if (i &gt; 0 &amp;&amp; nums[i] == nums[i-1]) continue;   /* skip duplicate first elements */
+        int l = i + 1, r = n - 1;
+        while (l &lt; r) {
+            int sum = nums[i] + nums[l] + nums[r];
+            if (sum == 0) {
+                /* record nums[i], nums[l], nums[r] */
+                l++; r--;
+            } else if (sum &lt; 0) l++;
+            else r--;
+        }
+    }
+}</code></pre><p>Fixing one element and running the opposite-ends scan on the rest is what turns 3Sum into Two Sum with an extra outer loop — and 4Sum is just that same idea nested one level deeper. The part that actually took a couple of attempts to get clean was managing the outer loop correctly at each level and skipping duplicates consistently, rather than the two-pointer core itself.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="dsa/two-pointers/opposite-ends-sort"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>

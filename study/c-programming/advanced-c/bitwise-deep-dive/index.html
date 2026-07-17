@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>Bitwise Operations Deep Dive — Advanced C (Pre-Kernel) — darshandev</title>
+    <meta name="description" content="Set/clear/toggle/test bit, extract/insert field, endianness, power-of-2 test, Kernighan popcount, byte/XOR swap.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/study/c-programming/advanced-c/bitwise-deep-dive/">
+    <meta property="og:title" content="Bitwise Operations Deep Dive — Advanced C (Pre-Kernel) — darshandev">
+    <meta property="og:description" content="Set/clear/toggle/test bit, extract/insert field, endianness, power-of-2 test, Kernighan popcount, byte/XOR swap.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/study/c-programming/advanced-c/bitwise-deep-dive/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/#study">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/study/c-programming/advanced-c/">← Advanced C (Pre-Kernel)</a><nav class="crumb" aria-label="Breadcrumb"><a href="/#study">Collection Log</a><span class="crumb__sep">/</span><a href="/study/c-programming/advanced-c/">Advanced C (Pre-Kernel)</a><span class="crumb__sep">/</span><span class="crumb__current">Bitwise Operations Deep Dive</span></nav><span class="accession stamp-play">C PROGRAMMING 1.7.C</span><h1 tabindex="-1">Bitwise Operations Deep Dive</h1><p class="detail-head__write-up">Set/clear/toggle/test bit, extract/insert field, endianness, power-of-2 test, Kernighan popcount, byte/XOR swap.</p></div><div class="detail-meta"><div class="detail-meta__item"><span class="detail-meta__label">Status</span><span class="detail-meta__value">Collected</span></div><div class="detail-meta__item"><span class="detail-meta__label">Notes</span><span class="detail-meta__value">Chapter test: 4/5 (80%)</span></div></div><div class="detail-body"><p>Ten pieces past the operators themselves — the actual idioms built out of them, the ones that show up in register-manipulation code constantly enough to just memorize.</p><pre><code>#define SET_BIT(x, n)    ((x) |= (1U &lt;&lt; (n)))
+#define CLEAR_BIT(x, n)  ((x) &amp;= ~(1U &lt;&lt; (n)))
+#define TOGGLE_BIT(x, n) ((x) ^= (1U &lt;&lt; (n)))
+#define TEST_BIT(x, n)   (((x) &gt;&gt; (n)) &amp; 1U)</code></pre><p>All four follow the same shape: <code>1U &lt;&lt; n</code> builds a mask with only bit <code>n</code> set, then OR sets it, AND-with-NOT clears it, XOR flips it, and a shift-then-mask reads it back out.</p><h3>A couple of the classic tricks</h3><pre><code>/* is n a power of 2? a power of 2 has exactly one bit set */
+int is_power_of_2(unsigned int n) {
+    return n &amp;&amp; !(n &amp; (n - 1));
+}
+
+/* Kernighan's bit-count: clears the lowest set bit each iteration */
+int popcount(unsigned int n) {
+    int count = 0;
+    while (n) {
+        n &amp;= (n - 1);
+        count++;
+    }
+    return count;
+}</code></pre><p><code>n &amp; (n-1)</code> clears the lowest set bit — for a power of 2 that's the <em>only</em> set bit, so the result is 0. Kernighan's popcount just repeats that operation, counting how many times it takes to reach zero, which only loops once per set bit instead of once per bit in the whole word.</p><p>Endianness is the other half of this chapter — the same multi-byte value is stored lowest-byte-first (little-endian, x86) or highest-byte-first (big-endian) depending on the architecture, which matters the instant a struct gets serialized over a wire and read back on a different machine.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/advanced-c/bitwise-deep-dive"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>

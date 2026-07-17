@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>Hash Map — DSA — darshandev</title>
+    <meta name="description" content="Frequency counting, complement lookups, and mapping relationships — all Easy-level so far.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/study/dsa/hash-map/">
+    <meta property="og:title" content="Hash Map — DSA — darshandev">
+    <meta property="og:description" content="Frequency counting, complement lookups, and mapping relationships — all Easy-level so far.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/study/dsa/hash-map/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/#study">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/#study">← Collection Log</a><nav class="crumb" aria-label="Breadcrumb"><a href="/#study">Collection Log</a><span class="crumb__sep">/</span><span class="crumb__current">DSA</span></nav><span class="accession stamp-play">DSA 02</span><h1 tabindex="-1">Hash Map</h1><p class="detail-head__write-up">Frequency counting, complement lookups, and mapping relationships — all Easy-level so far.</p></div><div class="detail-body"><p>The other pattern that comes up constantly enough to just keep in the toolkit alongside two pointers — trading O(n) space for turning an O(n²) lookup into O(1).</p><ul><li>A — Complement Lookup. Store <code>{value: index}</code> and check for the complement before storing the current value.</li><li>B — Frequency Counting. One map of counts, decrement-and-check-zero to compare two collections.</li><li>C — Bidirectional Mapping. Two maps enforcing a strict 1-to-1 relationship between two sequences.</li></ul><div class="detail-note"><span class="detail-note__label">When to reach for which</span><p>The real trade-off worth remembering: two pointers on a sorted array costs an O(n log n) sort to save O(1) space; a hash map costs O(n) space to skip the sort entirely and run in O(n). Which one's better depends entirely on whether the input already happens to be sorted.</p></div></div><div class="subtopic-grid"><a class="sub-card" href="/study/dsa/hash-map/complement-lookup/"><div class="sub-card__top"><span class="status status--done"><input type="checkbox" checked disabled>Collected</span></div><h3>Complement Lookup</h3><p>{value: index} map; check the complement before storing. Two Sum.</p><div class="sub-card__meta"><span>1 solved</span></div></a><a class="sub-card" href="/study/dsa/hash-map/frequency-counting/"><div class="sub-card__top"><span class="status status--done"><input type="checkbox" checked disabled>Collected</span></div><h3>Frequency Counting</h3><p>Single frequency map, decrement-and-check-zero pattern. Ransom Note, Valid Anagram.</p><div class="sub-card__meta"><span>1 solved</span></div></a></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="dsa/hash-map"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>

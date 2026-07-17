@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>Nested & Advanced Structs — Structs and Unions — darshandev</title>
+    <meta name="description" content="Structs containing structs, and the layout implications.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/study/c-programming/structs-unions/nested-advanced-structs/">
+    <meta property="og:title" content="Nested & Advanced Structs — Structs and Unions — darshandev">
+    <meta property="og:description" content="Structs containing structs, and the layout implications.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/study/c-programming/structs-unions/nested-advanced-structs/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/#study">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/study/c-programming/structs-unions/">← Structs and Unions</a><nav class="crumb" aria-label="Breadcrumb"><a href="/#study">Collection Log</a><span class="crumb__sep">/</span><a href="/study/c-programming/structs-unions/">Structs and Unions</a><span class="crumb__sep">/</span><span class="crumb__current">Nested & Advanced Structs</span></nav><span class="accession stamp-play">C PROGRAMMING 1.4.C</span><h1 tabindex="-1">Nested & Advanced Structs</h1><p class="detail-head__write-up">Structs containing structs, and the layout implications.</p></div><div class="detail-meta"><div class="detail-meta__item"><span class="detail-meta__label">Status</span><span class="detail-meta__value">Collected</span></div><div class="detail-meta__item"><span class="detail-meta__label">Notes</span><span class="detail-meta__value">Chapter test: 5/5</span></div></div><div class="detail-body"><p>Structs containing structs, and what that does to the actual memory layout underneath.</p><pre><code>struct address {
+    char city[32];
+    int zip;
+};
+
+struct person {
+    char name[32];
+    struct address addr;   /* embedded, not a pointer — laid out inline */
+};
+
+struct person p;
+p.addr.zip = 12345;</code></pre><p><code>addr</code> here isn't a pointer to a separate allocation — it's laid out directly inside <code>person</code>, contiguous with the other members. <code>sizeof(struct person)</code> includes the full <code>address</code> inline, and <code>p.addr.zip</code> chains the dot operator straight through both levels.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/structs-unions/nested-advanced-structs"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>Fast/Slow — Two Pointers — darshandev</title>
+    <meta name="description" content="One pointer at 1 step, one at 2 — cycles and midpoints. Linked List Cycle, Linked List Middle, Remove Nth Node.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/study/dsa/two-pointers/fast-slow/">
+    <meta property="og:title" content="Fast/Slow — Two Pointers — darshandev">
+    <meta property="og:description" content="One pointer at 1 step, one at 2 — cycles and midpoints. Linked List Cycle, Linked List Middle, Remove Nth Node.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/study/dsa/two-pointers/fast-slow/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/#study">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/study/dsa/two-pointers/">← Two Pointers</a><nav class="crumb" aria-label="Breadcrumb"><a href="/#study">Collection Log</a><span class="crumb__sep">/</span><a href="/study/dsa/two-pointers/">Two Pointers</a><span class="crumb__sep">/</span><span class="crumb__current">Fast/Slow</span></nav><span class="accession stamp-play">DSA 01.D</span><h1 tabindex="-1">Fast/Slow</h1><p class="detail-head__write-up">One pointer at 1 step, one at 2 — cycles and midpoints. Linked List Cycle, Linked List Middle, Remove Nth Node.</p></div><div class="detail-meta"><div class="detail-meta__item"><span class="detail-meta__label">Status</span><span class="detail-meta__value">Collected</span></div><div class="detail-meta__item"><span class="detail-meta__label">Notes</span><span class="detail-meta__value">3 solved</span></div></div><div class="detail-body"><p>The linked-list version of two pointers — no indexing exists on a list, only <code>.next</code>, so "fast" and "slow" have to be actual separate walks instead of arithmetic.</p><pre><code>int hasCycle(struct ListNode *head) {
+    struct ListNode *slow = head, *fast = head;
+    while (fast != NULL &amp;&amp; fast-&gt;next != NULL) {
+        slow = slow-&gt;next;
+        fast = fast-&gt;next-&gt;next;
+        if (slow == fast) return 1;   /* they met — there's a cycle */
+    }
+    return 0;   /* fast hit NULL — list terminates cleanly */
+}</code></pre><p>If the list actually ends, <code>fast</code> (moving twice as fast) reaches NULL first, no cycle. If it doesn't end, <code>fast</code> eventually laps <code>slow</code> on the loop and they land on the same node — which is impossible on a genuinely terminating list, so that collision is the whole proof. Finding the middle is the same walk, just returning <code>slow</code> once <code>fast</code> runs out instead of checking for a meeting point. Remove Nth Node adds a dummy head node so removing the actual head doesn't need special-casing.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="dsa/two-pointers/fast-slow"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>

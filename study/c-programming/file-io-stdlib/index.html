@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>File I/O and Standard Library — C Programming — darshandev</title>
+    <meta name="description" content="Reading/writing files and the standard-library surface worth actually knowing.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/study/c-programming/file-io-stdlib/">
+    <meta property="og:title" content="File I/O and Standard Library — C Programming — darshandev">
+    <meta property="og:description" content="Reading/writing files and the standard-library surface worth actually knowing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/study/c-programming/file-io-stdlib/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/#study">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/#study">← Collection Log</a><nav class="crumb" aria-label="Breadcrumb"><a href="/#study">Collection Log</a><span class="crumb__sep">/</span><span class="crumb__current">C Programming</span></nav><span class="accession stamp-play">C PROGRAMMING 1.5</span><h1 tabindex="-1">File I/O and Standard Library</h1><p class="detail-head__write-up">Reading/writing files and the standard-library surface worth actually knowing.</p></div><div class="detail-body"><p>The part of C that talks to the outside world instead of just moving values around in memory: opening files, reading and writing them, checking whether any of that actually worked, and the corners of <code>&lt;stdlib.h&gt;</code> worth actually knowing instead of looking up every time.</p><h3>The four chapters</h3><ul><li>A — File I/O Basics. <code>fopen</code>/<code>fclose</code> and the file-mode strings that decide read, write, append, binary, or some combination.</li><li>B — Reading and Writing. <code>fread</code>/<code>fwrite</code>/<code>fprintf</code>/<code>fscanf</code>, and the buffering happening underneath that decides when data actually hits disk.</li><li>C — Error Handling. <code>errno</code>, <code>perror</code>, and building the habit of checking return values that are extremely easy to just skip.</li><li>D — Standard Library Essentials. The parts of <code>&lt;stdlib.h&gt;</code> that come up constantly — conversion functions, <code>qsort</code>, exit codes.</li></ul><h3>Where this lands in driver work</h3><p>Userspace drivers talk to <code>/dev</code> and <code>/sys</code> nodes with exactly this file API — <code>open</code>/<code>read</code>/<code>write</code> on a device node is the same shape as <code>fopen</code>/<code>fread</code>/<code>fwrite</code> on a regular file, just at the syscall layer instead of buffered stdio. The error-checking discipline from Chapter C is non-negotiable there — a failed <code>open()</code> on a device node means something real went wrong with the hardware or permissions, not just a missing file.</p></div><div class="subtopic-grid"><a class="sub-card" href="/study/c-programming/file-io-stdlib/file-io-basics/"><div class="sub-card__top"><span class="status status--done"><input type="checkbox" checked disabled>Collected</span></div><h3>File I/O Basics</h3><p>fopen/fclose and file modes.</p><div class="sub-card__meta"><span>Chapter test: 4/5</span></div></a><a class="sub-card" href="/study/c-programming/file-io-stdlib/reading-writing/"><div class="sub-card__top"><span class="status status--done"><input type="checkbox" checked disabled>Collected</span></div><h3>Reading and Writing</h3><p>fread/fwrite/fprintf/fscanf and buffering behavior.</p><div class="sub-card__meta"><span>Chapter test: 5/5</span></div></a><a class="sub-card" href="/study/c-programming/file-io-stdlib/error-handling/"><div class="sub-card__top"><span class="status status--done"><input type="checkbox" checked disabled>Collected</span></div><h3>Error Handling</h3><p>errno, perror, and checking return values that are easy to skip.</p><div class="sub-card__meta"><span>Chapter test: 4/5</span></div></a><a class="sub-card" href="/study/c-programming/file-io-stdlib/stdlib-essentials/"><div class="sub-card__top"><span class="status status--done"><input type="checkbox" checked disabled>Collected</span></div><h3>Standard Library Essentials</h3><p>The parts of <stdlib.h> that come up constantly in interviews and real code.</p><div class="sub-card__meta"><span>Chapter test: 4/5</span></div></a></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/file-io-stdlib"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>

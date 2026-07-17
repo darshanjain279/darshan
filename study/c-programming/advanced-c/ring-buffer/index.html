@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>Ring Buffer — Advanced C (Pre-Kernel) — darshandev</title>
+    <meta name="description" content="Wraparound mechanics, the three full/empty disambiguation strategies, and a byte ring buffer put/get — the UART driver interview classic.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/study/c-programming/advanced-c/ring-buffer/">
+    <meta property="og:title" content="Ring Buffer — Advanced C (Pre-Kernel) — darshandev">
+    <meta property="og:description" content="Wraparound mechanics, the three full/empty disambiguation strategies, and a byte ring buffer put/get — the UART driver interview classic.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/study/c-programming/advanced-c/ring-buffer/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/#study">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/study/c-programming/advanced-c/">← Advanced C (Pre-Kernel)</a><nav class="crumb" aria-label="Breadcrumb"><a href="/#study">Collection Log</a><span class="crumb__sep">/</span><a href="/study/c-programming/advanced-c/">Advanced C (Pre-Kernel)</a><span class="crumb__sep">/</span><span class="crumb__current">Ring Buffer</span></nav><span class="accession stamp-play">C PROGRAMMING 1.7.G</span><h1 tabindex="-1">Ring Buffer</h1><p class="detail-head__write-up">Wraparound mechanics, the three full/empty disambiguation strategies, and a byte ring buffer put/get — the UART driver interview classic.</p></div><div class="detail-meta"><div class="detail-meta__item"><span class="detail-meta__label">Status</span><span class="detail-meta__value">Collected</span></div><div class="detail-meta__item"><span class="detail-meta__label">Notes</span><span class="detail-meta__value">Chapter test: 5/5 (100%), first attempt, unaided</span></div></div><div class="detail-body"><p>Three pieces, and this is the one everyone warns you is harder than it looks — a fixed-size circular buffer with a head and a tail that wrap back to 0 instead of running off the end.</p><h3>Wraparound</h3><pre><code>#define SIZE 8
+
+unsigned int advance(unsigned int idx) {
+    return (idx + 1) % SIZE;         /* or (idx + 1) &amp; (SIZE - 1) if SIZE is a power of 2 */
+}</code></pre><p>The bitwise-AND form only works when <code>SIZE</code> is a power of 2 — <code>x % SIZE</code> and <code>x &amp; (SIZE - 1)</code> are only equivalent in that specific case, since the mask only clears the exact bits that a power-of-2 modulus would wrap on.</p><h3>The full-vs-empty problem</h3><p>The actual hard part: <code>head == tail</code> alone is ambiguous — it means empty when nothing's been added yet, but it also means the exact same thing when the buffer has completely filled and wrapped back around to meet itself. Three ways to resolve it:</p><div class="detail-body__table-wrap"><table class="detail-body__table"><thead><tr><th>Strategy</th><th>How it works</th></tr></thead><tbody><tr><td>Count field</td><td>track element count separately — empty is count == 0, full is count == SIZE</td></tr><tr><td>Sacrifice a slot</td><td>never fill the last slot — full is (head+1) % SIZE == tail, one slot always wasted</td></tr><tr><td>Flag bit</td><td>an explicit is_full flag set on the write that causes head to catch tail</td></tr></tbody></table></div><h3>A byte ring buffer — the UART pattern</h3><pre><code>typedef struct {
+    uint8_t buf[SIZE];
+    unsigned int head, tail, count;
+} ring_buffer_t;
+
+int put(ring_buffer_t *rb, uint8_t byte) {
+    if (rb-&gt;count == SIZE) return -1;   /* full */
+    rb-&gt;buf[rb-&gt;tail] = byte;
+    rb-&gt;tail = (rb-&gt;tail + 1) % SIZE;
+    rb-&gt;count++;
+    return 0;
+}
+
+int get(ring_buffer_t *rb, uint8_t *out) {
+    if (rb-&gt;count == 0) return -1;      /* empty */
+    *out = rb-&gt;buf[rb-&gt;head];
+    rb-&gt;head = (rb-&gt;head + 1) % SIZE;
+    rb-&gt;count--;
+    return 0;
+}</code></pre><p>This is the UART RX-buffer shape directly: the interrupt handler calls <code>put</code> every time a byte arrives off the wire, and whatever's actually reading the device calls <code>get</code> to drain it — running independently, at different speeds, without either side needing to know anything about the other's timing.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/advanced-c/ring-buffer"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>

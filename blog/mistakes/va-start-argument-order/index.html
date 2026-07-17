@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>Two Typos, Two Compiler Errors, One Variadic Function — darshandev</title>
+    <meta name="description" content="My first submission had two separate compiler errors in four lines, and both were arguments I'd already been warned about once before. Apparently once wasn't enough.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/blog/mistakes/va-start-argument-order/">
+    <meta property="og:title" content="Two Typos, Two Compiler Errors, One Variadic Function — darshandev">
+    <meta property="og:description" content="My first submission had two separate compiler errors in four lines, and both were arguments I'd already been warned about once before. Apparently once wasn't enough.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/blog/mistakes/va-start-argument-order/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/#study">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/blog/">← Blog</a><nav class="crumb" aria-label="Breadcrumb"><a href="/blog/">Blog</a><span class="crumb__sep">/</span><a href="/blog/mistakes/">Mistakes</a><span class="crumb__sep">/</span><span class="crumb__current">Two Typos, Two Compiler Errors, One Variadic Function</span></nav><span class="accession stamp-play">MISTAKES — 7 Jul 2026</span><h1 tabindex="-1">Two Typos, Two Compiler Errors, One Variadic Function</h1><p class="detail-head__write-up">My first submission had two separate compiler errors in four lines, and both were arguments I'd already been warned about once before. Apparently once wasn't enough.</p></div><div class="detail-meta"><div class="detail-meta__item"><span class="detail-meta__label">Category</span><a class="detail-meta__value detail-meta__value--link" href="/blog/mistakes/">Mistakes</a></div><div class="detail-meta__item"><span class="detail-meta__label">Published</span><span class="detail-meta__value">7 Jul 2026</span></div><div class="detail-meta__item"><span class="detail-meta__label">Reading time</span><span class="detail-meta__value">5 min</span></div></div><div class="tag-row"><span class="tag">c</span><span class="tag">variadic-functions</span></div><div class="detail-body"><p>I'd gone through the <code>&lt;stdarg.h&gt;</code> stuff — <code>va_list</code>, <code>va_start</code>, <code>va_arg</code>, <code>va_end</code> — and felt like I basically had it down, enough to just sit down and write the function. Five lines, first submission, two compiler errors. Both of them from typing something that sounded right in my head instead of checking what the macro actually wanted.</p><h3>The setup</h3><p>The exercise was a <code>max_of</code> function: take a count of arguments, then that many <code>int</code>s, and return the largest.</p><pre><code>int max_of(int count, ...) {
+    va_list args;
+    va_start(count, args);          /* wrong order */
+
+    int max = va_arg(args, int);
+    for (int i = 1; i &lt; count; i++) {
+        int current = va_args(args, int);   /* not a real macro */
+        if (current &gt; max) max = current;
+    }
+
+    va_end(args);
+    return max;
+}</code></pre><p>I typed that out in one pass, fairly confident, and hit compile expecting maybe a missing semicolon somewhere.</p><h3>What went wrong</h3><p>Two errors came back, both on lines I'd written without a second thought:</p><pre><code>error: expected '__va_list_tag *' but argument is of type 'int'
+error: implicit declaration of function 'va_args'</code></pre><p>The first one was <code>va_start(count, args)</code> — arguments backwards. I guess the <code>va_list</code> variable is supposed to go first and the last named parameter second, something about the macro needing that parameter to figure out where the variadic arguments start relative to it on the stack. I don't have a solid grip on the mechanics of why, honestly, just that it's the order it wants. I wrote <code>count</code> first because count was the thing I was thinking about — it felt like the main variable in the function — not because anything about the macro actually suggested that order.</p><p>The second error was almost funny because there's no ambiguity to hide behind: <code>va_args</code> just isn't a real macro. It's <code>va_arg</code>, no trailing s. I don't remember consciously deciding to add that s. It's just one of those names that sounds exactly right for "grab the next variadic argument," so I typed it fast and never looked at the line again closely enough to catch it. Looking back at it now I can't even reconstruct the moment I typed it — it's not like I debated <code>va_arg</code> versus <code>va_args</code> and picked wrong, it just came out that way, which is somehow more unsettling than if I'd actually made a bad call.</p><p>What bugs me most about both of these is that neither one was new information. I'd already had both flagged once before, in earlier notes — the <code>va_start</code> order thing, and the <code>va_arg</code>-not-<code>va_args</code> trap. This wasn't the first warning. It was the second, and this time it cost two compiler errors instead of just a note to myself. Apparently reading a warning once and nodding along to it isn't the same thing as actually absorbing it.</p><h3>The fix</h3><p>Both fixes were basically one swap each:</p><pre><code>va_start(args, count);              /* va_list first, last named param second */
+int current = va_arg(args, int);    /* va_arg, no s */</code></pre><p>Function compiled clean after that and ran fine. Hasn't broken again on this specific piece of code, at least.</p><div class="detail-note"><span class="detail-note__label">The lesson</span><p><code>va_start</code> wants the list first, not the count, not whatever variable feels like the main character of the function in my head. And the extraction macro is <code>va_arg</code>, singular — I know that now, again, for the second time. What's actually bothering me is that both of these had already been pointed out to me once, and it didn't stick until a compiler yelled about it instead. I want to say something like "okay, now I'll always double-check argument order and never trust a macro name just because it sounds plausible" — but I already believed that after the first warning too, so I'm not totally convinced repeating the rule to myself again is what actually fixes it this time. Maybe it just has to cost me a couple more compiler errors before my hands stop doing it on autopilot.</p></div><div class="detail-related"><em>Related: <a href="/">Variadic functions</a> in the C fundamentals syllabus.</em></div></div><div class="entry-nav"><a class="back-link" href="/blog/mistakes/printf-hid-the-bug-it-was-supposed-to-prove/">← The Format Specifier That Hid My Own Bug From Me</a><a class="back-link" href="/blog/general/why-c-before-frameworks/">Why I'm Learning C Before Touching a Framework →</a></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="blog/va-start-argument-order"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>

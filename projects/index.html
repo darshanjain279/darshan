@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <title>Projects — darshandev</title>
+    <meta name="description" content="Hardware builds catalogued as-exhibited — problem, parts, what went wrong, and what got learned, Arduino and STM32/bare-metal alike.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/projects/">
+    <meta property="og:title" content="Projects — darshandev">
+    <meta property="og:description" content="Hardware builds catalogued as-exhibited — problem, parts, what went wrong, and what got learned, Arduino and STM32/bare-metal alike.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/projects/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/#study">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><span class="accession stamp-play">AS-EXHIBITED — Projects</span><h1 tabindex="-1">Projects</h1><p class="detail-head__write-up">Hardware builds catalogued as-exhibited — problem, parts, what went wrong, and what got learned, Arduino and STM32/bare-metal alike.</p></div><div class="plates"><a class="plate" href="/projects/stm32-pwm-led-fade/"><span class="plate__fig">FIG. 4 — Complete</span><h3>Fading an LED on the Blue Pill: My First Timer Peripheral</h3><p>Every build so far snapped a pin between two states, on or off, one bit at a time. This one asked the chip to hold a brightness instead, and the answer wasn't a faster loop, it was handing the timing over to a peripheral built for exactly that.</p><div class="tag-row"><span class="tag">embedded</span><span class="tag">stm32</span><span class="tag">arduino</span><span class="tag">c</span><span class="tag">pwm</span><span class="tag">timers</span></div></a><a class="plate" href="/projects/stm32-button-led/"><span class="plate__fig">FIG. 3 — Complete</span><h3>Reading a Button on the Blue Pill: My First Digital Input</h3><p>The first two builds only ever talked at me — an LED that's always on, a serial line that never listens. This time the chip finally reacts to something I do in real time, through a tactile button and an internal pull-up.</p><div class="tag-row"><span class="tag">embedded</span><span class="tag">stm32</span><span class="tag">arduino</span><span class="tag">c</span><span class="tag">gpio</span></div></a><a class="plate" href="/projects/stm32-uart-hello-world/"><span class="plate__fig">FIG. 2 — Complete</span><h3>UART Hello World: Making the Blue Pill Talk Back</h3><p>The LED could only tell me on or off. This time the Blue Pill got a voice — first through Serial.println(), then through a hand-computed baud rate divisor and a raw USART1 register.</p><div class="tag-row"><span class="tag">embedded</span><span class="tag">stm32</span><span class="tag">arduino</span><span class="tag">c</span><span class="tag">uart</span></div></a><a class="plate" href="/projects/stm32-blue-pill-first-blink/"><span class="plate__fig">FIG. 1 — Complete</span><h3>Blinking an LED on the Blue Pill: Once With Arduino, Once With Just Registers</h3><p>Two boards, no soldering iron, and one onboard LED — lit first through the Arduino framework, then lit again with nothing but memory-mapped registers and a linker script I wrote myself.</p><div class="tag-row"><span class="tag">embedded</span><span class="tag">stm32</span><span class="tag">arduino</span><span class="tag">c</span></div></a></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+  </body>
+</html>

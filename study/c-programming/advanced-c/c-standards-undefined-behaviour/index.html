@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>C Standards & Undefined Behaviour — Advanced C (Pre-Kernel) — darshandev</title>
+    <meta name="description" content="C89–C17 differences, _Bool/stdbool, _Static_assert, the real UB inventory (signed overflow, null deref, OOB, strict aliasing, UAF), integer promotions, the -1 &lt; 1U trap.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/study/c-programming/advanced-c/c-standards-undefined-behaviour/">
+    <meta property="og:title" content="C Standards & Undefined Behaviour — Advanced C (Pre-Kernel) — darshandev">
+    <meta property="og:description" content="C89–C17 differences, _Bool/stdbool, _Static_assert, the real UB inventory (signed overflow, null deref, OOB, strict aliasing, UAF), integer promotions, the -1 &lt; 1U trap.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/study/c-programming/advanced-c/c-standards-undefined-behaviour/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/#study">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/study/c-programming/advanced-c/">← Advanced C (Pre-Kernel)</a><nav class="crumb" aria-label="Breadcrumb"><a href="/#study">Collection Log</a><span class="crumb__sep">/</span><a href="/study/c-programming/advanced-c/">Advanced C (Pre-Kernel)</a><span class="crumb__sep">/</span><span class="crumb__current">C Standards & Undefined Behaviour</span></nav><span class="accession stamp-play">C PROGRAMMING 1.7.F</span><h1 tabindex="-1">C Standards & Undefined Behaviour</h1><p class="detail-head__write-up">C89–C17 differences, _Bool/stdbool, _Static_assert, the real UB inventory (signed overflow, null deref, OOB, strict aliasing, UAF), integer promotions, the -1 < 1U trap.</p></div><div class="detail-meta"><div class="detail-meta__item"><span class="detail-meta__label">Status</span><span class="detail-meta__value">Collected</span></div><div class="detail-meta__item"><span class="detail-meta__label">Notes</span><span class="detail-meta__value">Chapter test: 2/5 first attempt → retake 4/5 (80%)</span></div></div><div class="detail-body"><p>Six pieces, and this chapter reframed how I read C in general — a lot of code that looks fine and "just works" is actually relying on behavior the standard never actually promises.</p><h3>What undefined behavior actually means</h3><p>It doesn't mean "crashes" — it means the standard places zero requirements on what happens, so the compiler is free to do literally anything, including something that looks completely fine right up until a different compiler flag or a different platform makes it not fine. The real inventory: signed integer overflow, dereferencing NULL, reading or writing out of bounds, violating strict aliasing (accessing memory through an unrelated type), and use-after-free.</p><pre><code>_Static_assert(sizeof(int) == 4, "this code assumes a 4-byte int");</code></pre><p><code>_Static_assert</code> catches assumptions like that at compile time instead of leaving them to fail silently at runtime on some other platform.</p><h3>The signed/unsigned comparison trap</h3><pre><code>if (-1 &lt; 1U) {
+    printf("true\n");
+} else {
+    printf("false\n");   /* this branch actually runs */
+}</code></pre><p>This one genuinely surprised me. When a signed int is compared against an unsigned int, the signed value gets implicitly converted to unsigned first — <code>-1</code> becomes <code>UINT_MAX</code>, which is not less than <code>1U</code>. The comparison silently does the opposite of what it looks like it should, with no warning at the call site.</p><h3>Integer promotions</h3><p><code>char</code> and <code>short</code> operands get silently promoted to <code>int</code> before almost any arithmetic or comparison — meaning the types actually being compared or added are often not the ones written in the source at all. It's part of why the signed/unsigned trap above needs care: the promotion rules decide which type "wins" before the comparison even happens.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/advanced-c/c-standards-undefined-behaviour"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>

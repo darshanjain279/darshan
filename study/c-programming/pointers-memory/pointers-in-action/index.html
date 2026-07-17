@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>Pointers in Action — Pointers and Memory — darshandev</title>
+    <meta name="description" content="Reading/writing via pointer, reassignment, live-value reflection, a pointer’s own size, NULL.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/study/c-programming/pointers-memory/pointers-in-action/">
+    <meta property="og:title" content="Pointers in Action — Pointers and Memory — darshandev">
+    <meta property="og:description" content="Reading/writing via pointer, reassignment, live-value reflection, a pointer’s own size, NULL.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/study/c-programming/pointers-memory/pointers-in-action/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/#study">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/study/c-programming/pointers-memory/">← Pointers and Memory</a><nav class="crumb" aria-label="Breadcrumb"><a href="/#study">Collection Log</a><span class="crumb__sep">/</span><a href="/study/c-programming/pointers-memory/">Pointers and Memory</a><span class="crumb__sep">/</span><span class="crumb__current">Pointers in Action</span></nav><span class="accession stamp-play">C PROGRAMMING 1.2.B</span><h1 tabindex="-1">Pointers in Action</h1><p class="detail-head__write-up">Reading/writing via pointer, reassignment, live-value reflection, a pointer’s own size, NULL.</p></div><div class="detail-meta"><div class="detail-meta__item"><span class="detail-meta__label">Status</span><span class="detail-meta__value">Collected</span></div><div class="detail-meta__item"><span class="detail-meta__label">Notes</span><span class="detail-meta__value">Chapter test: 5/5</span></div></div><div class="detail-body"><p>Eight pieces building directly on Chapter A — actually using a pointer to read and write, watching a value change through two different names at once, reassigning where a pointer points, and NULL as the deliberate "points at nothing" state.</p><h3>Writing through a pointer</h3><pre><code>int x = 10;
+int *p = &amp;x;
+
+*p = 20;              /* writes through the pointer */
+printf("%d\n", x);   /* 20 — x itself changed, because p points at x's address */</code></pre><p>This is the core trick — <code>x</code> and <code>*p</code> are two different names for the exact same memory. Change one and the other reflects it immediately, because there's only one location involved.</p><h3>Reassignment</h3><pre><code>int a = 1, b = 2;
+int *p = &amp;a;
+p = &amp;b;                /* p now points at b instead — a is untouched */</code></pre><h3>A pointer's own size</h3><p><code>sizeof(p)</code> doesn't depend on what <code>p</code> points to — on a 64-bit system every pointer is 8 bytes, whether it's <code>int *</code>, <code>char *</code>, or a pointer to some huge struct. What varies by type is how many bytes get read or written on a dereference, not the size of the address itself.</p><h3>NULL</h3><p><code>int *p = NULL;</code> means "points at nothing, deliberately." Address 0 is reserved by the OS specifically so dereferencing a NULL pointer reliably crashes instead of silently corrupting something — a NULL check before dereferencing is one of the cheapest habits to build early and one of the easiest to skip under pressure.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/pointers-memory/pointers-in-action"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>
