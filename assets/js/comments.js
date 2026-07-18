@@ -9,10 +9,10 @@
 // existing GitHub Discussions threads keep mapping to the right page.
 (function comments() {
   var GISCUS = {
-    repo: 'darshanjain279/darshandev',
-    repoId: 'R_kgDOTYjxXA',
+    repo: 'darshanjain279/darshan',
+    repoId: 'R_kgDOTQr_uw',
     category: 'Comments',
-    categoryId: 'DIC_kwDOTYjxXM4DBM0z'
+    categoryId: 'DIC_kwDOTQr_u84DBeEm'
   };
 
   function isDark() {
