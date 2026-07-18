@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>Two `if`s, One Already-Freed Node — darshandev</title>
+    <meta name="description" content="My delete_node printed the right list on every run I tried by hand. AddressSanitizer disagreed — and it was right, for a reason plain output could never have shown me.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/blog/mistakes/delete-node-non-exclusive-if/">
+    <meta property="og:title" content="Two `if`s, One Already-Freed Node — darshandev">
+    <meta property="og:description" content="My delete_node printed the right list on every run I tried by hand. AddressSanitizer disagreed — and it was right, for a reason plain output could never have shown me.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/blog/mistakes/delete-node-non-exclusive-if/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/study/">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/blog/">← Blog</a><nav class="crumb" aria-label="Breadcrumb"><a href="/blog/">Blog</a><span class="crumb__sep">/</span><a href="/blog/mistakes/">Mistakes</a><span class="crumb__sep">/</span><span class="crumb__current">Two `if`s, One Already-Freed Node</span></nav><span class="accession stamp-play">MISTAKES — 16 Jul 2026</span><h1 tabindex="-1">Two `if`s, One Already-Freed Node</h1><p class="detail-head__write-up">My delete_node printed the right list on every run I tried by hand. AddressSanitizer disagreed — and it was right, for a reason plain output could never have shown me.</p></div><div class="detail-meta"><div class="detail-meta__item"><span class="detail-meta__label">Category</span><a class="detail-meta__value detail-meta__value--link" href="/blog/mistakes/">Mistakes</a></div><div class="detail-meta__item"><span class="detail-meta__label">Published</span><span class="detail-meta__value">16 Jul 2026</span></div><div class="detail-meta__item"><span class="detail-meta__label">Reading time</span><span class="detail-meta__value">5 min</span></div></div><div class="tag-row"><span class="tag">c</span><span class="tag">pointers</span><span class="tag">linked-lists</span></div><div class="detail-body"><p>This was a warm-up drill, not even the real thing — one dedicated session on linked lists before the Phase 1 Milestone Test, specifically to shake out <code>delete_node</code> before it counted. It still took six rounds and two separate bugs to get clean, and the way it got clean is the part worth writing down.</p><h3>The setup</h3><p><code>delete_node</code> walks a list with <code>prev</code>/<code>cur</code>, looking for a target value, and has to handle three shapes of match — head, middle, tail — plus "not found" without touching anything. I wrote it as two separate, top-level <code>if</code> blocks, not an <code>if</code>/<code>else if</code>:</p><pre><code>if (prev == NULL) {
+    *head = cur-&gt;next;
+    free(cur);
+}
+if (cur-&gt;data == target) {
+    prev-&gt;next = cur-&gt;next;
+    free(cur);
+}</code></pre><p>It compiled clean. It even passed every test case I ran by hand, printing the correct list every single time.</p><h3>What went wrong</h3><p>Delete the head node, and the first <code>if</code> fires: <code>*head</code> gets reassigned, <code>cur</code> gets freed. Nothing stops execution from falling straight into the second <code>if</code> right after — which promptly evaluates <code>cur-&gt;data == target</code> on memory that was freed one line earlier. On the specific run I was testing, that read happened to come back looking plausible, because the allocator hadn't reused those bytes yet. The list printed correctly. The bug was real anyway — AddressSanitizer flagged it immediately as a genuine heap-use-after-free, the first time I'd reached for a sanitizer at all in this curriculum rather than trusting <code>gcc -Wall</code> and eyeballed output. The not-found case was worse: <code>cur</code> is <code>NULL</code> after walking off the end of the list, and the second block dereferences it unconditionally — a confirmed segfault, just one I hadn't happened to trigger yet.</p><p>Two independent <code>if</code>s look mutually exclusive if you only ever picture the cases you designed them for. Nothing in the code actually enforces that — control just keeps flowing downward regardless of what the first block did.</p><h3>The fix, round one — and a second bug</h3><p>Restructuring to <code>else if</code> closed the use-after-free and the segfault in one move. But it opened an edge case I hadn't tested: an empty list, called with <code>*head == NULL</code>. <code>prev</code> is <code>NULL</code> there too — the walking loop never runs either way — so <code>if (prev == NULL)</code> alone can't tell "matched at the front" apart from "there was nothing to walk in the first place." Passed it my one-node and multi-node cases clean; crashed on the empty one.</p><p><code>prev == NULL</code> is a <em>necessary</em> fact about a head-match, not a <em>sufficient</em> one. The fix needed a second, independent fact — that something was actually found — before treating the first case as confirmed:</p><pre><code>if (cur != NULL &amp;&amp; prev == NULL) {
+    *head = cur-&gt;next;
+    free(cur);
+} else if (cur != NULL &amp;&amp; cur-&gt;data == target) {
+    prev-&gt;next = cur-&gt;next;
+    free(cur);
+}</code></pre><p>That version passed head, middle, tail, not-found, and empty-list, clean under <code>-Wall -Wextra</code> and AddressSanitizer.</p><div class="detail-note"><span class="detail-note__label">The lesson</span><p>Two rules I now check for on any search-then-act function. First: if exactly one of several cases should ever run, that has to be guaranteed by the control-flow structure itself — <code>else</code>/<code>else if</code> or an early <code>return</code> — not by two independent <code>if</code>s that merely share a condition someone <em>intended</em> to be exclusive. Second: a tracking variable sitting at its initial value is evidence a specific thing happened, not proof of it — before trusting it, ask what <em>else</em> could have produced that same state. Here, an empty list and a head-match both leave <code>prev</code> at <code>NULL</code>; only checking whether a node was actually found separates them. Neither bug showed up in plain output. Both showed up the moment a sanitizer actually looked at the memory.</p></div><div class="detail-related"><em>Related: this exact combined condition — <code>cur != NULL &amp;&amp; prev == NULL</code> — got reused unaided a day later inside the Phase 1 Milestone Test's own <code>delete_node</code> submission, and generalized cleanly to an unrelated array-decay question in the same session.</em></div></div><div class="entry-nav"><a class="back-link" href="/blog/mistakes/uart-framing-bug/">← The Six-Hour UART Framing Bug</a><span></span></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="blog/delete-node-non-exclusive-if"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>

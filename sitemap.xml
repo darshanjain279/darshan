@@ -7,6 +7,7 @@
   <url><loc>https://darshandev.com/blog/general/why-c-before-frameworks/</loc></url>
   <url><loc>https://darshandev.com/blog/mistakes/</loc></url>
   <url><loc>https://darshandev.com/blog/mistakes/bst-rotation-bug/</loc></url>
+  <url><loc>https://darshandev.com/blog/mistakes/delete-node-non-exclusive-if/</loc></url>
   <url><loc>https://darshandev.com/blog/mistakes/doubly-linked-list-stale-types/</loc></url>
   <url><loc>https://darshandev.com/blog/mistakes/eight-typos-and-counting/</loc></url>
   <url><loc>https://darshandev.com/blog/mistakes/function-pointer-parens/</loc></url>
@@ -30,11 +31,15 @@
   <url><loc>https://darshandev.com/daily/2026-07-06/</loc></url>
   <url><loc>https://darshandev.com/daily/2026-07-08/</loc></url>
   <url><loc>https://darshandev.com/daily/2026-07-09/</loc></url>
+  <url><loc>https://darshandev.com/daily/2026-07-15/</loc></url>
+  <url><loc>https://darshandev.com/daily/2026-07-16/</loc></url>
+  <url><loc>https://darshandev.com/daily/2026-07-18/</loc></url>
   <url><loc>https://darshandev.com/projects/</loc></url>
   <url><loc>https://darshandev.com/projects/stm32-blue-pill-first-blink/</loc></url>
   <url><loc>https://darshandev.com/projects/stm32-button-led/</loc></url>
   <url><loc>https://darshandev.com/projects/stm32-pwm-led-fade/</loc></url>
   <url><loc>https://darshandev.com/projects/stm32-uart-hello-world/</loc></url>
+  <url><loc>https://darshandev.com/study/</loc></url>
   <url><loc>https://darshandev.com/study/c-programming/advanced-c/</loc></url>
   <url><loc>https://darshandev.com/study/c-programming/advanced-c/bitwise-deep-dive/</loc></url>
   <url><loc>https://darshandev.com/study/c-programming/advanced-c/c-standards-undefined-behaviour/</loc></url>
@@ -107,4 +112,8 @@
   <url><loc>https://darshandev.com/study/dsa/two-pointers/partition-3-way/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/two-pointers/same-direction/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/two-pointers/sliding-window-hybrid/</loc></url>
+  <url><loc>https://darshandev.com/study/linux-tools/linux-command-line/</loc></url>
+  <url><loc>https://darshandev.com/study/linux-tools/linux-command-line/filesystem-files/</loc></url>
+  <url><loc>https://darshandev.com/study/linux-tools/linux-command-line/processes-system/</loc></url>
+  <url><loc>https://darshandev.com/study/linux-tools/linux-command-line/shell-scripting-minimal/</loc></url>
 </urlset>
