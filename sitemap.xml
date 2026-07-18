@@ -40,6 +40,7 @@
   <url><loc>https://darshandev.com/projects/stm32-pwm-led-fade/</loc></url>
   <url><loc>https://darshandev.com/projects/stm32-uart-hello-world/</loc></url>
   <url><loc>https://darshandev.com/study/</loc></url>
+  <url><loc>https://darshandev.com/study/c-programming/</loc></url>
   <url><loc>https://darshandev.com/study/c-programming/advanced-c/</loc></url>
   <url><loc>https://darshandev.com/study/c-programming/advanced-c/bitwise-deep-dive/</loc></url>
   <url><loc>https://darshandev.com/study/c-programming/advanced-c/c-standards-undefined-behaviour/</loc></url>
@@ -90,11 +91,13 @@
   <url><loc>https://darshandev.com/study/c-programming/structs-unions/structs-pointers/</loc></url>
   <url><loc>https://darshandev.com/study/c-programming/structs-unions/typedef/</loc></url>
   <url><loc>https://darshandev.com/study/c-programming/structs-unions/unions/</loc></url>
+  <url><loc>https://darshandev.com/study/drivers/</loc></url>
   <url><loc>https://darshandev.com/study/drivers/character-device-drivers/</loc></url>
-  <url><loc>https://darshandev.com/study/drivers/common-bus-drivers/</loc></url>
-  <url><loc>https://darshandev.com/study/drivers/interrupt-handling/</loc></url>
-  <url><loc>https://darshandev.com/study/drivers/memory-mapped-io/</loc></url>
+  <url><loc>https://darshandev.com/study/drivers/driver-quality-advanced/</loc></url>
+  <url><loc>https://darshandev.com/study/drivers/gpio-simple-hardware/</loc></url>
+  <url><loc>https://darshandev.com/study/drivers/i2c-spi-drivers/</loc></url>
   <url><loc>https://darshandev.com/study/drivers/platform-drivers-device-tree/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/hash-map/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/hash-map/complement-lookup/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/hash-map/frequency-counting/</loc></url>
@@ -112,8 +115,32 @@
   <url><loc>https://darshandev.com/study/dsa/two-pointers/partition-3-way/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/two-pointers/same-direction/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/two-pointers/sliding-window-hybrid/</loc></url>
+  <url><loc>https://darshandev.com/study/job-ready-portfolio/</loc></url>
+  <url><loc>https://darshandev.com/study/job-ready-portfolio/dsa-lite-for-screens/</loc></url>
+  <url><loc>https://darshandev.com/study/job-ready-portfolio/interview-engineering/</loc></url>
+  <url><loc>https://darshandev.com/study/job-ready-portfolio/mock-gauntlet/</loc></url>
+  <url><loc>https://darshandev.com/study/job-ready-portfolio/portfolio-projects/</loc></url>
+  <url><loc>https://darshandev.com/study/kernel-internals/</loc></url>
+  <url><loc>https://darshandev.com/study/kernel-internals/interrupts/</loc></url>
+  <url><loc>https://darshandev.com/study/kernel-internals/kernel-building-blocks/</loc></url>
+  <url><loc>https://darshandev.com/study/kernel-internals/kernel-debugging/</loc></url>
+  <url><loc>https://darshandev.com/study/kernel-internals/kernel-memory/</loc></url>
+  <url><loc>https://darshandev.com/study/kernel-internals/kernel-synchronization/</loc></url>
+  <url><loc>https://darshandev.com/study/kernel-internals/modules-kernel-build/</loc></url>
+  <url><loc>https://darshandev.com/study/linux-tools/</loc></url>
+  <url><loc>https://darshandev.com/study/linux-tools/compilation-build-deep/</loc></url>
+  <url><loc>https://darshandev.com/study/linux-tools/debugging-tools/</loc></url>
+  <url><loc>https://darshandev.com/study/linux-tools/git/</loc></url>
   <url><loc>https://darshandev.com/study/linux-tools/linux-command-line/</loc></url>
   <url><loc>https://darshandev.com/study/linux-tools/linux-command-line/filesystem-files/</loc></url>
   <url><loc>https://darshandev.com/study/linux-tools/linux-command-line/processes-system/</loc></url>
   <url><loc>https://darshandev.com/study/linux-tools/linux-command-line/shell-scripting-minimal/</loc></url>
+  <url><loc>https://darshandev.com/study/linux-tools/system-programming-essentials/</loc></url>
+  <url><loc>https://darshandev.com/study/os-architecture/</loc></url>
+  <url><loc>https://darshandev.com/study/os-architecture/arm-soc-boot/</loc></url>
+  <url><loc>https://darshandev.com/study/os-architecture/hardware-protocols/</loc></url>
+  <url><loc>https://darshandev.com/study/os-architecture/kernel-user-boundary-syscall-flow/</loc></url>
+  <url><loc>https://darshandev.com/study/os-architecture/processes-scheduling-context/</loc></url>
+  <url><loc>https://darshandev.com/study/os-architecture/synchronization-theory/</loc></url>
+  <url><loc>https://darshandev.com/study/os-architecture/virtual-memory-caches/</loc></url>
 </urlset>
