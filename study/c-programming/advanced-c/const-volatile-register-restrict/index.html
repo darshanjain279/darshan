@@ -29,7 +29,7 @@ void process(int *restrict a, int *restrict b) {
        otherwise be unsafe if they did overlap */
 }</code></pre><p><code>register</code> asks the compiler to keep a variable in a CPU register instead of memory — in practice compilers make that call themselves now and mostly ignore the hint. <code>restrict</code> is closer to a contract than a hint: it tells the compiler two pointers won't alias each other, which is exactly the kind of thing <code>memcpy</code> relies on (and <code>memmove</code>, from 1.3.F, exists precisely for the case where that promise can't be made).</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/advanced-c/const-volatile-register-restrict"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

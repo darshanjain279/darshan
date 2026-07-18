@@ -34,7 +34,7 @@ struct person {
 struct person p;
 p.addr.zip = 12345;</code></pre><p><code>addr</code> here isn't a pointer to a separate allocation — it's laid out directly inside <code>person</code>, contiguous with the other members. <code>sizeof(struct person)</code> includes the full <code>address</code> inline, and <code>p.addr.zip</code> chains the dot operator straight through both levels.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/structs-unions/nested-advanced-structs"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

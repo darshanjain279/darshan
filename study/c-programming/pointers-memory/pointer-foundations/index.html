@@ -29,7 +29,7 @@ printf("%p\n", (void *)&amp;x);   /* 0x7ffee... — the address */
 printf("%p\n", (void *)p);    /* same address — p stores it */
 printf("%d\n", *p);           /* 10 — dereferencing p gets back to the value */</code></pre><h3>Declaring vs dereferencing</h3><p><code>int *p</code> reads as "p is a pointer to int" when declaring. The same <code>*</code> used later, <code>*p</code>, means "go to the address p holds and get the value there" — same symbol, two different jobs depending on context.</p><h3>Garbage when uninitialized</h3><p><code>int *p;</code> with no initializer holds whatever address happened to already be sitting in that memory — not NULL, not zero, just garbage. Dereferencing it reads or writes to a random address, which might crash immediately or might silently corrupt something else entirely. A pointer gets initialized, every time, even if it's just to NULL.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/pointers-memory/pointer-foundations"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

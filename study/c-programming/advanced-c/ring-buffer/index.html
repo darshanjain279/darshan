@@ -46,7 +46,7 @@ int get(ring_buffer_t *rb, uint8_t *out) {
     return 0;
 }</code></pre><p>This is the UART RX-buffer shape directly: the interrupt handler calls <code>put</code> every time a byte arrives off the wire, and whatever's actually reading the device calls <code>get</code> to drain it — running independently, at different speeds, without either side needing to know anything about the other's timing.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/advanced-c/ring-buffer"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

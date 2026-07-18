@@ -39,7 +39,7 @@ int main(void) {
     return 0;
 }</code></pre><p>A plain <code>int *out</code> parameter would only let <code>allocate</code> change what the pointer points to, not the pointer variable itself back in <code>main</code>. To modify the caller's pointer — make it point somewhere new — the function needs a pointer to that pointer. This exact shape shows up constantly in kernel code that allocates a resource and hands it back through an out-parameter.</p><p>Triple pointers (<code>int ***</code>) exist, but the only place I've actually seen them is arrays of pointers-to-pointers — genuinely rare outside of specific data structures.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/pointers-memory/multi-level-pointers"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

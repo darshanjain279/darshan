@@ -31,7 +31,7 @@ union value v;
 v.i = 1;
 printf("%d\n", v.bytes[0]);   /* reads the first byte of that same int, byte by byte */</code></pre><p><code>sizeof(union value)</code> is the size of its largest member, not the sum of all of them — because they're all overlapping the same bytes. Writing <code>v.i</code> and then reading <code>v.bytes</code> is type punning: reinterpreting the same bits as a different type, which is exactly how <code>bytes[0]</code> above ends up showing one raw byte of the integer.</p><p>It's genuinely useful for exactly that — inspecting raw bytes, or protocol code that treats the same wire data as either a whole value or its component bytes depending on context — but writing one member and reading a different, unrelated one otherwise is asking for undefined behavior and platform-dependent results (endianness, in particular, decides which byte of the int actually lands in <code>bytes[0]</code>).</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/structs-unions/unions"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

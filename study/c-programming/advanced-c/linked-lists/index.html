@@ -42,7 +42,7 @@ void insert_head(struct node **head, int val) {
     return prev;   /* the new head */
 }</code></pre><h3>Finding the middle and detecting a cycle</h3><p>Both use the same fast/slow pointer trick: one pointer advances one node per step, the other advances two. When the fast pointer reaches the end, the slow one is sitting at the middle. If the list has a cycle instead, the fast pointer eventually laps the slow one and they meet — which is impossible on a list that actually terminates in NULL. Free-all and search are the straightforward ones: walk <code>next</code> until NULL, doing the work (or freeing the node) at each step.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/advanced-c/linked-lists"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

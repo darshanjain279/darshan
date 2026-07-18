@@ -27,7 +27,7 @@ struct point *pp = &amp;p;
 (*pp).x = 99;    /* works, but clunky — the parens are required (. binds tighter than *) */
 pp-&gt;x = 99;      /* identical meaning, this is what actually gets written */</code></pre><p><code>-&gt;</code> is just <code>(*p).</code> with less noise — dereference the pointer, then access the member, in one operator.</p><h3>Passing by pointer</h3><p>Passing a struct by value copies the whole thing onto the stack — fine for something the size of a <code>point</code>, wasteful and slow for anything bigger. Passing a pointer instead copies just the address, and is also the only way a function can actually modify the caller's struct rather than a throwaway copy of it.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/structs-unions/structs-pointers"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

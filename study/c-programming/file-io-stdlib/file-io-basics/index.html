@@ -31,7 +31,7 @@ if (f == NULL) {
 
 fclose(f);</code></pre><div class="detail-body__table-wrap"><table class="detail-body__table"><thead><tr><th>Mode</th><th>Meaning</th></tr></thead><tbody><tr><td><code>"r"</code></td><td>read, file must already exist</td></tr><tr><td><code>"w"</code></td><td>write, creates the file or truncates it if it already exists</td></tr><tr><td><code>"a"</code></td><td>append, creates the file if needed, writes go to the end</td></tr><tr><td><code>"rb"</code> / <code>"wb"</code></td><td>same as r/w but binary mode — matters on some platforms for newline translation</td></tr></tbody></table></div><p><code>fopen</code> returns <code>NULL</code> on failure instead of throwing anything — a missing file, a permissions problem, a full disk all just come back as <code>NULL</code>, which is exactly why it gets checked before the pointer is used for anything.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/file-io-stdlib/file-io-basics"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

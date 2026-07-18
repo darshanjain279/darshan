@@ -31,7 +31,7 @@ enum status {
 int n = c;              /* fine — implicit conversion, no cast needed */
 if (c == 0) { }         /* also fine — RED literally is 0 */</code></pre><p>There's no real type safety here — an <code>enum color</code> is a named <code>int</code> underneath, and C will happily compare it against a raw integer or assign it into one. The benefit is entirely readability, not enforcement.</p><h3>Where this shows up in kernel code</h3><p><code>enum irqreturn</code> is the pattern I now watch for — interrupt handlers return <code>IRQ_HANDLED</code> or <code>IRQ_NONE</code> instead of a bare 0 or 1, so the call site reads as intent instead of a number that means nothing without checking a header file.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/core-syntax/enums"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

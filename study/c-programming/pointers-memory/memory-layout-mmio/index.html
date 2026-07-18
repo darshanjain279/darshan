@@ -28,7 +28,7 @@ volatile uint32_t *gpio_reg = (volatile uint32_t *)GPIO_BASE;
 uint32_t status = *gpio_reg;     /* read the register */</code></pre><p>A hardware register is just a fixed memory address — cast that address to a pointer, mark it <code>volatile</code> so the compiler never caches or reorders the access, and dereferencing it reads or writes the actual hardware.</p><h3>Read-modify-write</h3><pre><code>*gpio_reg |= (1 &lt;&lt; 3);    /* set bit 3, leave the rest alone */
 *gpio_reg &amp;= ~(1 &lt;&lt; 3);   /* clear bit 3, leave the rest alone */</code></pre><p>Setting a single bit without disturbing the others is the pattern that shows up in essentially every register access in real driver code — OR to set, AND-with-NOT to clear, and <code>volatile</code> making sure the compiler doesn't decide the read is redundant and skip it.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/pointers-memory/memory-layout-mmio"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

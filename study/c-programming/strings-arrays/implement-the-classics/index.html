@@ -37,7 +37,7 @@ int my_strcmp(const char *a, const char *b) {
     return (unsigned char)*a - (unsigned char)*b;
 }</code></pre><p><code>my_strcmp</code> walking off the end and returning a byte difference is exactly why <code>strcmp</code> returns 0 for equal instead of something more "boolean" — it's genuinely just subtracting the two mismatching bytes, and 0 falls out naturally when nothing mismatches.</p><h3>memcpy vs memmove</h3><p>The one real gotcha in this set: <code>memcpy</code> doesn't handle overlapping source and destination correctly — copying forward byte-by-byte into a region that overlaps the source can overwrite bytes before they've been read. <code>memmove</code> checks for overlap and copies in whichever direction (front-to-back or back-to-front) avoids clobbering unread data. Writing both by hand is the only reason I actually remember which one to reach for.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/strings-arrays/implement-the-classics"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

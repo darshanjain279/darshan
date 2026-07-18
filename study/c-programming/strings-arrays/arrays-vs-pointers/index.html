@@ -30,7 +30,7 @@ printf("%zu\n", sizeof(p));     /* 8 — just a pointer */
 arr = p;    /* compile error — arr is not a modifiable value, p is */
 p = arr;    /* fine — p can be reassigned to point anywhere */</code></pre><p>Indexing (<code>arr[i]</code> / <code>p[i]</code>) and dereferencing behave identically either way — that's the part that makes them feel interchangeable. <code>sizeof</code> and reassignment are where they split: an array name is a fixed label for a fixed block of memory, not a variable that can be pointed elsewhere, while a pointer genuinely is just a variable holding an address.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/strings-arrays/arrays-vs-pointers"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

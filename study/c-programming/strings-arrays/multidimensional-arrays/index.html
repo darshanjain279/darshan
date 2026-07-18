@@ -25,7 +25,7 @@
 
 grid[1][2] = 7;    /* row 1, column 2 */</code></pre><p><code>grid[3][4]</code> is really one contiguous block of 12 ints. Row-major layout means the whole first row comes first in memory, then the whole second row, and so on — <code>grid[1][2]</code> is really just <code>*(grid + 1*4 + 2)</code> under the hood, the compiler doing the row-width multiplication automatically.</p><p>Passing a 2D array to a function needs the column count as part of the type — <code>void f(int grid[][4])</code> — because the compiler needs that number to compute the row stride; the row count alone doesn't tell it anything.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/strings-arrays/multidimensional-arrays"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

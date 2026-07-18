@@ -27,7 +27,7 @@
     printf("false\n");   /* this branch actually runs */
 }</code></pre><p>This one genuinely surprised me. When a signed int is compared against an unsigned int, the signed value gets implicitly converted to unsigned first — <code>-1</code> becomes <code>UINT_MAX</code>, which is not less than <code>1U</code>. The comparison silently does the opposite of what it looks like it should, with no warning at the call site.</p><h3>Integer promotions</h3><p><code>char</code> and <code>short</code> operands get silently promoted to <code>int</code> before almost any arithmetic or comparison — meaning the types actually being compared or added are often not the ones written in the source at all. It's part of why the signed/unsigned trap above needs care: the promotion rules decide which type "wins" before the comparison even happens.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/advanced-c/c-standards-undefined-behaviour"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

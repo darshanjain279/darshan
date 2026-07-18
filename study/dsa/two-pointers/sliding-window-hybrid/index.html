@@ -35,7 +35,7 @@
     return best == INT_MAX ? 0 : best;
 }</code></pre><p>Minimum Window Substring is the harder version of the same shape, using a have/need pair of counters instead of a running sum: <code>need</code> records what the target string requires, <code>have</code> tracks how much of that is currently satisfied inside the window. Two details that actually mattered — guard the <code>need</code> count before incrementing <code>have</code> (only count a character if it's one the target actually needs), and check <code>== 0</code> before decrementing on the shrink side, or the counts drift negative and the window looks satisfied when it isn't.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="dsa/two-pointers/sliding-window-hybrid"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

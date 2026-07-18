@@ -37,7 +37,7 @@ struct point make_point(int x, int y) {  /* the actual definition */
     return p;
 }</code></pre><p>A declaration just tells the compiler a function or type exists somewhere; a definition is the actual body. Headers hold declarations so multiple <code>.c</code> files can share them; each <code>.c</code> file gets compiled to its own <code>.o</code> separately, and the linker stitches the <code>.o</code> files together afterward, matching each call to wherever the real definition lives.</p><p>The <code>#ifndef</code>/<code>#define</code>/<code>#endif</code> guard exists because a header can get <code>#include</code>d indirectly more than once in the same translation unit — without it, the second inclusion redefines <code>struct point</code> and the compiler rightly refuses.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/preprocessor-compilation/multi-file-compilation"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

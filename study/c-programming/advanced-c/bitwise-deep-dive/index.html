@@ -39,7 +39,7 @@ int popcount(unsigned int n) {
     return count;
 }</code></pre><p><code>n &amp; (n-1)</code> clears the lowest set bit — for a power of 2 that's the <em>only</em> set bit, so the result is 0. Kernighan's popcount just repeats that operation, counting how many times it takes to reach zero, which only loops once per set bit instead of once per bit in the whole word.</p><p>Endianness is the other half of this chapter — the same multi-byte value is stored lowest-byte-first (little-endian, x86) or highest-byte-first (big-endian) depending on the architecture, which matters the instant a struct gets serialized over a wire and read back on a different machine.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/advanced-c/bitwise-deep-dive"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

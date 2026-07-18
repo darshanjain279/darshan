@@ -29,7 +29,7 @@ printf("%d\n", x);   /* 20 — x itself changed, because p points at x's address
 int *p = &amp;a;
 p = &amp;b;                /* p now points at b instead — a is untouched */</code></pre><h3>A pointer's own size</h3><p><code>sizeof(p)</code> doesn't depend on what <code>p</code> points to — on a 64-bit system every pointer is 8 bytes, whether it's <code>int *</code>, <code>char *</code>, or a pointer to some huge struct. What varies by type is how many bytes get read or written on a dereference, not the size of the address itself.</p><h3>NULL</h3><p><code>int *p = NULL;</code> means "points at nothing, deliberately." Address 0 is reserved by the OS specifically so dereferencing a NULL pointer reliably crashes instead of silently corrupting something — a NULL check before dereferencing is one of the cheapest habits to build early and one of the easiest to skip under pressure.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/pointers-memory/pointers-in-action"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

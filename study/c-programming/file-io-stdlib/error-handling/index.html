@@ -27,7 +27,7 @@ if (f == NULL) {
     return -1;
 }</code></pre><p><code>errno</code> is a global (thread-local, really) set by the last failed call, and <code>perror</code> prints a human-readable message for whatever it currently holds. The pattern is always the same: check the return value for the failure signal first (<code>NULL</code>, <code>-1</code>, whatever that function uses), and only then bother consulting <code>errno</code> for why.</p><p>It's an easy check to skip because most of the time the call does succeed — right up until it's running against a full disk, a missing device, or a permissions problem, and the program either crashes on a NULL dereference or silently does nothing.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/file-io-stdlib/error-handling"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

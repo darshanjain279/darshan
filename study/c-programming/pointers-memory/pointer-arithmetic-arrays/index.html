@@ -33,7 +33,7 @@ int a = *p++;    /* a = 1, then p advances to arr[1] — postfix ++ binds to p, 
 int b = *++p;    /* p advances to arr[2] first, then b = 3 */
 int c = (*p)++;  /* c = 3 (old value), then arr[2] becomes 4 */</code></pre><p><code>++</code> binds to the pointer itself unless parentheses say otherwise — <code>*p++</code> increments the pointer after dereferencing the old address, <code>*++p</code> increments the pointer first, and <code>(*p)++</code> is the odd one out that actually changes the pointed-to value instead of the pointer.</p><h3>Pointer subtraction and bounds</h3><p>Subtracting two pointers into the same array gives the number of elements between them, not bytes — <code>p2 - p1</code> on two <code>int *</code> values is already scaled down. Going past the end of an array with pointer arithmetic — even just computing the out-of-bounds address without dereferencing it — is undefined behavior, not just risky.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/pointers-memory/pointer-arithmetic-arrays"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

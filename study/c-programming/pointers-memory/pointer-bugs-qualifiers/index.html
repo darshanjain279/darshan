@@ -25,7 +25,7 @@
 int * const p2 = &amp;x;        /* const pointer to int — can change *p2, can't reassign p2 */
 const int * const p3 = &amp;x;  /* both — can change neither */</code></pre><p>Read it right to left from the <code>*</code>: <code>const int *</code> is "a pointer to a const int," <code>int * const</code> is "a const pointer to int." The position of <code>const</code> relative to the <code>*</code> is the entire difference.</p><h3>void* and volatile</h3><p><code>void *</code> is C's generic pointer — it can point at anything, but can't be dereferenced directly and can't do pointer arithmetic until it's cast to a concrete type first. <code>volatile</code> tells the compiler a value can change outside the program's own control flow, so it can't cache it in a register or optimize away what looks like a redundant read — a first hint of why it matters for hardware registers, which is exactly where the next chapter goes.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/pointers-memory/pointer-bugs-qualifiers"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

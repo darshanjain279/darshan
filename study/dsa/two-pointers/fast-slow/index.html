@@ -31,7 +31,7 @@
     return 0;   /* fast hit NULL — list terminates cleanly */
 }</code></pre><p>If the list actually ends, <code>fast</code> (moving twice as fast) reaches NULL first, no cycle. If it doesn't end, <code>fast</code> eventually laps <code>slow</code> on the loop and they land on the same node — which is impossible on a genuinely terminating list, so that collision is the whole proof. Finding the middle is the same walk, just returning <code>slow</code> once <code>fast</code> runs out instead of checking for a meeting point. Remove Nth Node adds a dummy head node so removing the actual head doesn't need special-casing.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="dsa/two-pointers/fast-slow"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

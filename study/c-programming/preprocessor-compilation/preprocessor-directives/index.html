@@ -27,7 +27,7 @@
 int buf[MAX_SIZE];
 int y = SQUARE(3 + 1);   /* expands to ((3 + 1) * (3 + 1)) = 16, not 3 + 1 * 3 + 1 = 7 */</code></pre><p>Function-like macros are textual, not real function calls — no type checking, no scoping, just direct substitution. <code>SQUARE(x)</code> without the parens around <code>x</code> would expand <code>SQUARE(3+1)</code> into <code>3+1 * 3+1</code>, which is a completely different (wrong) expression thanks to operator precedence. Parenthesize every macro parameter, and the whole expansion, out of habit.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/preprocessor-compilation/preprocessor-directives"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

@@ -33,7 +33,7 @@
     return NULL;
 }</code></pre><p>The order matters: check for the complement <em>before</em> storing the current value, not after — otherwise a target that needs the same element twice would match against itself. First pass at this used <code>range(len(nums) - 1)</code>, which quietly skips the last element; the fix is just <code>range(len(nums))</code>, since there's no reason the last element can't be the one that completes a pair.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="dsa/hash-map/complement-lookup"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

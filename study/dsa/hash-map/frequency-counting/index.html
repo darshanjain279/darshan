@@ -33,7 +33,7 @@
     return 1;
 }</code></pre><p>One map is enough — building a second frequency map for the ransom note itself and comparing the two is extra work a single decrement-as-you-go pass avoids entirely. Checking <code>== 0</code> before decrementing is what catches a letter that's already exhausted; skip that check and the count just goes negative, quietly signaling "has enough" when it doesn't. For Valid Anagram specifically, checking the two string lengths match first is worth doing before touching a hash map at all — it's a free early exit that also removes the need for a third comparison pass afterward.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="dsa/hash-map/frequency-counting"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>

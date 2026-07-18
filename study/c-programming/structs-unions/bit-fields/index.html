@@ -32,7 +32,7 @@ struct status_reg r;
 r.enable = 1;
 r.mode = 3;</code></pre><p>The <code>: n</code> after each member tells the compiler to pack it into exactly <code>n</code> bits instead of a full <code>unsigned int</code> — <code>enable</code> and <code>mode</code> and <code>errcode</code> here all share the same underlying word instead of each taking 4 bytes. It's precisely the same layout a register datasheet describes — "bit 0 is enable, bits 1-2 are mode" — just expressed as C instead of a table.</p><p>The catch is that exact bit ordering and padding within the word is implementation-defined — portable across compilers and architectures it is not, which is part of why a lot of real driver code still does manual shifting and masking on a plain integer instead of trusting bit-field layout.</p></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="c-programming/structs-unions/bit-fields"></div></div></div>
       </main>
-      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span><a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
     </div>
 
     <script src="/assets/js/theme.js?v=1.0.0"></script>
