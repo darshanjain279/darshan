@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <script>(function(){try{var t=localStorage.getItem("darshandev-theme");if(t){document.documentElement.setAttribute("data-theme",t);}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/cormorant-garamond-variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://giscus.app" crossorigin>
+    <title>Heaps and Priority Queues — DSA — darshandev</title>
+    <meta name="description" content="Not started yet — 12 problems queued.">
+    <meta name="theme-color" content="#f2efe4">
+    <link rel="canonical" href="https://darshandev.com/study/dsa/heaps-priority-queues/">
+    <meta property="og:title" content="Heaps and Priority Queues — DSA — darshandev">
+    <meta property="og:description" content="Not started yet — 12 problems queued.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://darshandev.com/study/dsa/heaps-priority-queues/">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.0">
+  </head>
+  <body>
+    <div class="shell">
+      <header class="site-header"><a class="brand" href="/" aria-label="darshandev home"><span class="brand__tag">COLL. 01</span><span class="brand__name">darshandev</span></a><nav class="nav" aria-label="Primary"><div class="nav__links"><a href="/study/">Study</a><a href="/daily/">Daily</a><a href="/blog/">Blog</a><a href="/projects/">Projects</a><a href="/#about">About</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button></nav></header>
+      <main id="viewport">
+        <div class="view"><div class="detail-head"><a class="back-link" href="/study/dsa/">← DSA</a><nav class="crumb" aria-label="Breadcrumb"><a href="/study/">Collection Log</a><span class="crumb__sep">/</span><a href="/study/dsa/">DSA</a><span class="crumb__sep">/</span><span class="crumb__current">Heaps and Priority Queues</span></nav><span class="accession stamp-play">DSA 3.3</span><h1 tabindex="-1">Heaps and Priority Queues</h1><p class="detail-head__write-up">Not started yet — 12 problems queued.</p></div><div class="detail-body"><p>A binary heap gives O(log n) insert/extract-min(or max) — ideal for "top K", "kth largest", "merge sorted streams", and "running median" problems. The two-heap trick — a max-heap for the lower half plus a min-heap for the upper half — gives O(log n) median maintenance.</p><h3>Sub-patterns</h3><ul><li>A — Top-K. Maintain a heap of size k for the k largest/smallest/closest.</li><li>B — K-Way Merge. Merge several sorted sources using a heap of their current fronts.</li><li>C — Two-Heap Median. A max-heap and a min-heap split the data in half for O(log n) median updates.</li><li>D — Heap-Driven Greedy Scheduling. Always process the currently-best-available choice.</li></ul><h3>Practice set (12)</h3><ul><li><strong>Easy</strong> — Kth Largest Element in a Stream, Last Stone Weight</li><li><strong>Medium</strong> — Kth Largest Element in an Array, Top K Frequent Elements, Task Scheduler, K Closest Points to Origin, Reorganize String, Meeting Rooms II (Premium, also relevant to Intervals)</li><li><strong>Hard</strong> — Merge k Sorted Lists, Find Median from Data Stream, IPO, Trapping Rain Water II</li></ul></div><div class="subtopic-grid"><a class="sub-card" href="/study/dsa/heaps-priority-queues/top-k/"><div class="sub-card__top"><span class="status status--pending"><input type="checkbox"  disabled>Pending</span></div><h3>Top-K</h3><p>Maintain a heap of size k to track the k largest, smallest, or closest elements.</p></a><a class="sub-card" href="/study/dsa/heaps-priority-queues/k-way-merge/"><div class="sub-card__top"><span class="status status--pending"><input type="checkbox"  disabled>Pending</span></div><h3>K-Way Merge</h3><p>Merge several sorted sources at once using a heap of their current fronts.</p></a><a class="sub-card" href="/study/dsa/heaps-priority-queues/two-heap-median/"><div class="sub-card__top"><span class="status status--pending"><input type="checkbox"  disabled>Pending</span></div><h3>Two-Heap Median</h3><p>A max-heap for the lower half plus a min-heap for the upper half, giving O(log n) running-median updates.</p></a><a class="sub-card" href="/study/dsa/heaps-priority-queues/heap-driven-greedy-scheduling/"><div class="sub-card__top"><span class="status status--pending"><input type="checkbox"  disabled>Pending</span></div><h3>Heap-Driven Greedy Scheduling</h3><p>Always process the currently-best-available choice, popped off a heap.</p></a></div><div class="detail-comments"><div class="detail-comments__head"><h2>Notes from readers</h2><span class="detail-comments__plate">Comments — via GitHub</span></div><div id="giscus-comments" data-term="dsa/heaps-priority-queues"></div></div></div>
+      </main>
+      <footer class="footer" id="about"><span>Catalogued by Darshan — est. 2026 — darshandev.com</span> <a href="mailto:hello@darshandev.com">hello@darshandev.com</a></footer>
+    </div>
+
+    <script src="/assets/js/theme.js?v=1.0.0"></script>
+    <script src="/assets/js/reveal.js?v=1.0.0"></script>
+    <script src="/assets/js/comments.js?v=1.0.0"></script>
+  </body>
+</html>

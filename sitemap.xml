@@ -98,15 +98,173 @@
   <url><loc>https://darshandev.com/study/drivers/i2c-spi-drivers/</loc></url>
   <url><loc>https://darshandev.com/study/drivers/platform-drivers-device-tree/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/advanced-graph-topics/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/advanced-graph-topics/bipartite-check/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/advanced-graph-topics/bridges-articulation-points/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/advanced-graph-topics/euler-paths/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/advanced-string-algorithms/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/advanced-string-algorithms/kmp/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/advanced-string-algorithms/manachers-algorithm/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/advanced-string-algorithms/rabin-karp/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-search-trees/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-search-trees/bst-construction/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-search-trees/insert-delete/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-search-trees/kth-smallest-in-order/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-search-trees/range-successor-queries/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-search-trees/validate-a-bst/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-search/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-search/binary-search-on-answer-space/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-search/search-for-a-boundary/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-search/search-in-2d-matrix/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-search/search-in-rotated-sorted-array/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-search/search-in-sorted-array/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-trees/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-trees/bfs-level-order/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-trees/dfs-traversals/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-trees/lowest-common-ancestor/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-trees/path-problems/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-trees/symmetry-comparison/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/binary-trees/tree-construction-from-traversals/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/bit-manipulation/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/bit-manipulation/bit-counting/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/bit-manipulation/single-number-family/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/bit-manipulation/subset-generation-via-bitmask/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/bit-manipulation/xor-tricks/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/bitmask-dp/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/bitmask-dp/assignment-style-bitmask-dp/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/bitmask-dp/traveling-salesman-style-dp/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/design-problems/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/design-problems/cache-design/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/design-problems/hash-map-list-o1-random-ops/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/design-problems/iterator-design/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/divide-and-conquer/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/divide-and-conquer/counting-via-divide-and-conquer/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/divide-and-conquer/quickselect/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/divide-and-conquer/sort-based-divide-and-conquer/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/dp-foundations/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/dp-foundations/linear-1d-dp/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/dp-foundations/space-optimized-dp/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/dp-foundations/take-skip-decision-dp/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/dp-on-grids/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/dp-on-grids/grid-dp-extra-carried-state/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/dp-on-grids/obstacle-handling/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/dp-on-grids/path-cost-minimization/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/dp-on-grids/path-counting/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/dp-on-trees/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/dp-on-trees/diameter-style-dp/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/dp-on-trees/include-exclude-at-a-node/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/dp-on-trees/subtree-aggregation/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/graph-traversal/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/graph-traversal/connected-components/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/graph-traversal/graph-cloning/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/graph-traversal/grid-matrix-bfs-dfs/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/graph-traversal/multi-source-bfs/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/greedy/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/greedy/exchange-argument-greedy/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/greedy/greedy-plus-sorting/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/greedy/greedy-simulation/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/greedy/interval-scheduling/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/hash-map/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/hash-map/bidirectional-mapping/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/hash-map/complement-lookup/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/hash-map/frequency-counting/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/heaps-priority-queues/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/heaps-priority-queues/heap-driven-greedy-scheduling/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/heaps-priority-queues/k-way-merge/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/heaps-priority-queues/top-k/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/heaps-priority-queues/two-heap-median/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/interval-dp/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/interval-dp/matrix-chain-style/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/interval-dp/partitioning-dp/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/interval-dp/remove-and-combine-dp/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/intervals/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/intervals/insert-a-new-interval/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/intervals/interval-intersection/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/intervals/merge-overlapping/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/intervals/overlap-counting/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/knapsack-01/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/knapsack-01/classic-knapsack/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/knapsack-01/partition-equal-subset-sum/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/knapsack-01/subset-sum/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/knapsack-01/target-sum/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/knapsack-unbounded/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/knapsack-unbounded/coin-change-count-ways/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/knapsack-unbounded/coin-change-min-coins/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/knapsack-unbounded/combination-sum-as-dp/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/lcs-string-dp/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/lcs-string-dp/distinct-subsequences/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/lcs-string-dp/edit-distance/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/lcs-string-dp/longest-common-subsequence/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/lcs-string-dp/palindromic-substring-subsequence/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/lcs-string-dp/string-interleaving/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/linked-list/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/linked-list/fast-slow-reverse/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/linked-list/pointer-manipulation/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/linked-list/traversal-deletion/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/linked-list/two-list-traversal/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/linked-list/two-pointer-lists/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/longest-increasing-subsequence/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/longest-increasing-subsequence/lis-on-log-n/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/longest-increasing-subsequence/lis-on-squared/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/longest-increasing-subsequence/lis-variants/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/math-number-theory/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/math-number-theory/gcd-lcm/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/math-number-theory/general-math-puzzles/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/math-number-theory/modular-exponentiation/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/math-number-theory/sieve-of-eratosthenes/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/matrix-manipulation/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/matrix-manipulation/in-place-marking/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/matrix-manipulation/rotation/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/matrix-manipulation/search-in-a-sorted-matrix/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/matrix-manipulation/spiral-traversal/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/minimum-spanning-tree/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/minimum-spanning-tree/kruskals/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/minimum-spanning-tree/prims/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/prefix-sum/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/prefix-sum/1d-running-prefix-sum/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/prefix-sum/2d-matrix-prefix-sum/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/prefix-sum/prefix-sum-hash-map/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/prefix-sum/prefix-xor/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/queue-monotonic-deque/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/queue-monotonic-deque/circular-queue-design/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/queue-monotonic-deque/monotonic-deque/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/queue-monotonic-deque/standard-queue-bfs-driver/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/recursion-backtracking/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/recursion-backtracking/combinations/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/recursion-backtracking/constraint-satisfaction/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/recursion-backtracking/partitioning/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/recursion-backtracking/permutations/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/recursion-backtracking/string-backtracking/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/recursion-backtracking/subsets/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/segment-fenwick-tree/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/segment-fenwick-tree/fenwick-tree/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/segment-fenwick-tree/lazy-propagation/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/segment-fenwick-tree/segment-tree/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/shortest-path/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/shortest-path/0-1-bfs/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/shortest-path/all-pairs-floyd-warshall/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/shortest-path/single-source-dijkstra-bellman-ford/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/sliding-window/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/sliding-window/fixed-size-window/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/sliding-window/frequency-matching-window/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/sliding-window/variable-size-expandable-window/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/sliding-window/variable-size-shrinkable-window/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/stack/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/stack/matching-parsing/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/stack/min-stack-design/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/stack/monotonic-stack/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/stack/stack-based-simulation/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/state-machine-dp/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/state-machine-dp/buy-sell-stock-family/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/state-machine-dp/general-finite-state-transition-dp/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/topological-sort/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/topological-sort/cycle-detection-via-failed-topo-sort/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/topological-sort/dfs-based-topological-sort/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/topological-sort/kahns-algorithm/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/tries/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/tries/autocomplete-style-aggregation/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/tries/prefix-search/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/tries/word-dictionaries-with-wildcards/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/two-pointers/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/two-pointers/fast-slow/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/two-pointers/hash-enumerate/</loc></url>
@@ -115,6 +273,11 @@
   <url><loc>https://darshandev.com/study/dsa/two-pointers/partition-3-way/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/two-pointers/same-direction/</loc></url>
   <url><loc>https://darshandev.com/study/dsa/two-pointers/sliding-window-hybrid/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/union-find/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/union-find/basic-connectivity/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/union-find/cycle-detection-undirected/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/union-find/dynamic-connectivity/</loc></url>
+  <url><loc>https://darshandev.com/study/dsa/union-find/kruskals-mst/</loc></url>
   <url><loc>https://darshandev.com/study/job-ready-portfolio/</loc></url>
   <url><loc>https://darshandev.com/study/job-ready-portfolio/dsa-lite-for-screens/</loc></url>
   <url><loc>https://darshandev.com/study/job-ready-portfolio/interview-engineering/</loc></url>
