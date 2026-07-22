@@ -31,6 +31,8 @@
               int sum = nums[i] + nums[l] + nums[r];
               if (sum == 0) {
                   /* record nums[i], nums[l], nums[r] */
+                  while (l &lt; r &amp;&amp; nums[l] == nums[l+1]) l++;   /* skip duplicate left values */
+                  while (l &lt; r &amp;&amp; nums[r] == nums[r-1]) r--;   /* skip duplicate right values */
                   l++; r--;
               } else if (sum &lt; 0) l++;
               else r--;
